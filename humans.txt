@@ -1,0 +1,29 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Lead Designer and Front-end Developer: Joel GutiÃ©rrez
+	Site: gutierrezjoel.com.ar
+	Twitter: @Gutz333
+    Mail: j333@live.com.ar
+	Location: Mendoza, Argentina
+    
+    Front-end Developer: Adriel ZÃ¡rate Site: adrielzarate.com.ar
+    Twitter: @adriel_zarate
+    Mail: adriel_zarate@hotmail.com
+    Location: Mendoza, Argentina
+
+    Lead Developer: AgustÃ­n Silva
+    Mail: agustin@sfidasoft.com
+	Location: Mendoza, Argentina
+
+# THANKS
+	
+	Everyone at the Open Source Community
+
+# SITE
+	Standards: HTML5, CSS3
+	Language: EspaÃ±ol
+	Components: jQuery, Modernizr, Bootstrap, Google Web Fonts, Normalize.css
+	IDE: Linux, Mac OS X, Sublime Text 2 (Emmet), Geany, Cyberduck, Filezilla, MAMP, GitHub, Brackets
