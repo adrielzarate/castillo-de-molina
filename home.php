@@ -78,6 +78,7 @@
     </section>
 
     <section id="history-section" class="about container content-section text-center">
+
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Historia</h2>
@@ -85,6 +86,7 @@
                 <p>Hace 150 años, los hermanos españoles Correa Albano fundaron Viña San Pedro en Molina, Chile. Al llegar a la cima más alta de sus tierras, maravillados contemplaron su majestuoso entorno. En ese instante, decidieron perpetuar esa sublime riqueza, en un “Castillo” que emergiera desde la tierra, su primer vino reserva: Castillo de Molina.</p>
             </div>
         </div>
+
     </section>
 
     <section class="img-section field-fixed">
@@ -106,7 +108,7 @@
     <div id="valleys-map">
 
         <ul class="list-inline">
-            <li><a id="casa-blanca" href="#">Casa Blanca</a></li>
+            <li><a id="casa-blanca" href="#">Casablanca</a></li>
             <li><a id="elqui" href="#">Elqui</a></li>
             <li><a id="rapel" href="#">Rapel</a></li>
             <li><a id="maule" href="#">Maule</a></li>
@@ -116,7 +118,7 @@
         <div id="valley1" class="row valley-box valley-box-active">
             <div class="col-xs-12">
                 <img class="img-responsive" src="img/field-2.jpg" alt="">
-                <h4>Casa Blanca</h4>
+                <h4>Casablanca</h4>
                 <p>Casablanca es tal vez el más conocido de los valles fríos chilenos, a 18 km en línea recta del mar y rodeado por la Cordillera de la Costa. Tiene clara influencia marítima y cada día se presenta una neblina matinal llamada "camanchaca".</p>
             </div>
         </div>
@@ -158,6 +160,11 @@
         <div id="map-canvas"></div>
 
     </div>
+
+    <section class="img-section dark-cava text-center">
+        <!-- <img class="img-background" src="img/dark-cava.jpg" alt=""> -->
+        <h3><em>Castillo de Molina, su enfoque hoy en día es buscar para cada cepa, un valle que exprese a la perfección nuestra búsqueda de vinos de excelencia.</em></h3>
+    </section>
 
     <section id="enology-section" class="about cv container content-section text-center">
         <div class="row">
@@ -281,8 +288,9 @@
       var mapOptions = {
         scrollwheel: false,
         zoom: 8,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
         center: new google.maps.LatLng(mapLat, mapLong),
-        styles: [
+        /*styles: [
                 {
                     "featureType": "administrative",
                     "elementType": "labels.text.fill",
@@ -361,7 +369,7 @@
                         }
                     ]
                 }
-            ]
+            ]*/
       };
       map = new google.maps.Map(document.getElementById('map-canvas'),
           mapOptions);
