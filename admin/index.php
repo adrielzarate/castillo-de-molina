@@ -8,7 +8,6 @@
 	ControlAdmin();
 	
 	$pag_actual = 'home';
-
 	
 ?>
 <!DOCTYPE html>

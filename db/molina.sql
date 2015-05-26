@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 25-05-2015 a las 20:50:37
+-- Tiempo de generación: 26-05-2015 a las 04:42:26
 -- Versión del servidor: 5.5.43-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.9
 
@@ -23,35 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `administradores`
---
-
-CREATE TABLE IF NOT EXISTS `administradores` (
-  `user` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pass` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `nombre` varchar(11) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `apellido` varchar(11) COLLATE utf8_spanish_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `user` (`user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `archivos`
---
-
-CREATE TABLE IF NOT EXISTS `archivos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `cod_seccion` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `items`
 --
 
@@ -59,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cod_seccion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `cod_sub_seccion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `text` varchar(4) COLLATE utf8_spanish_ci NOT NULL,
   `nombre_esp` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `nombre_eng` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `esp` longtext COLLATE utf8_spanish_ci NOT NULL,
@@ -70,151 +42,52 @@ CREATE TABLE IF NOT EXISTS `items` (
 -- Volcado de datos para la tabla `items`
 --
 
-INSERT INTO `items` (`id`, `cod_seccion`, `cod_sub_seccion`, `nombre_esp`, `nombre_eng`, `esp`, `eng`) VALUES
-(1, 'menu', 'opciones', 'Nosotros', 'Us', 'Nosotros', 'Us'),
-(2, 'menu', 'opciones', 'Historia', 'History', 'Historia', 'History'),
-(3, 'menu', 'opciones', 'Valles', 'Valleys', 'Valles', 'Valleys'),
-(4, 'menu', 'opciones', 'Enología', 'Eonology', 'Enología', 'Oenology'),
-(5, 'menu', 'opciones', 'Noticias', 'News', 'Noticias', 'News'),
-(6, 'menu', 'opciones', 'Vinos', 'Wines', 'Vinos', 'Wines'),
-(7, 'menu ', 'opciones', 'Cell Parking', 'Cell Parking', 'Cell Parking', 'Cell Parking'),
-(8, 'menu', 'opciones', 'Contacto', 'Contact', 'Contacto', 'Contact'),
-(9, 'menu', 'edad', 'Título', 'Title', 'Verifique su edad', 'Verifique su edad'),
-(10, 'menu', 'edad', 'Condición', 'Condition', 'Debe ser mayor de 18 años para visitar el sitio', 'Debe ser mayor de 18 años para visitar el sitio'),
-(11, 'menu', 'edad', 'Texto botón', 'Button text', 'Soy mayor de 18 años', 'Soy mayor de 18 años'),
-(12, 'nosotros', 'intro_dia', 'Título', 'Title', 'Este puede ser tu mejor día', 'Este puede ser tu mejor día'),
-(13, 'nosotros', 'intro_dia', 'Texto', 'Text', 'Cualquier momento puede ser bueno si sabes disfrutarlo. Desconéctate y aprovecha tu energía del día, para disfrutar un gran momento junto a Castillo de Molina.', 'Cualquier momento puede ser bueno si sabes disfrutarlo. Desconéctate y aprovecha tu energía del día, para disfrutar un gran momento junto a Castillo de Molina.'),
-(14, 'nosotros', 'intro_noche', 'Título', 'Title', 'Esta puede ser tu mejor noche', 'Esta puede ser tu mejor noche'),
-(15, 'nosotros', 'intro_noche', 'Texto', 'Text', 'Si estás en casa, invita a tus amigos a cocinar algo nuevo o simplemente a descorchar una botella de buen vino y disfrutar del aquí y el ahora.', 'Si estás en casa, invita a tus amigos a cocinar algo nuevo o simplemente a descorchar una botella de buen vino y disfrutar del aquí y el ahora.'),
-(16, 'nosotros', 'nosotros', 'Título', 'Title', 'Nosotros', 'Us'),
-(17, 'nosotros', 'nosotros', 'Texto 1', 'Text 1', 'Castillo de Molina nace como la primer línea Reserva de Viña San Pedro, con una especial dedicación a la calidad e innovación, tomando con calma y cuidadosamente la búsqueda incansable de los mejores valles de Chile.', 'Castillo de Molina nace como la primer línea Reserva de Viña San Pedro, con una especial dedicación a la calidad e innovación, tomando con calma y cuidadosamente la búsqueda incansable de los mejores valles de Chile.'),
-(18, 'nosotros', 'nosotros', 'Texto 2 ', 'Text 2', 'Castillo de Molina plantea el disfrutar a cada momento, en cada lugar, porque la vida es una vorágine, pero la vida es ahora.', 'Castillo de Molina plantea el disfrutar a cada momento, en cada lugar, porque la vida es una vorágine, pero la vida es ahora.'),
-(19, 'nosotros', 'historia', 'Título', 'Title', 'Historia', 'History'),
-(20, 'nosotros', 'historia', 'Texto 1', 'Text 1', '“Se dice que los mejores vinos del mundo provienen de un château, un castillo”', '“Se dice que los mejores vinos del mundo provienen de un château, un castillo”'),
-(21, 'nosotros', 'historia', 'Texto 2', 'Text 2', 'Hace 150 años, los hermanos españoles Correa Albano fundaron Viña San Pedro en Molina, Chile. Al llegar a la cima más alta de sus tierras, maravillados contemplaron su majestuoso entorno. En ese instante, decidieron perpetuar esa sublime riqueza, en un “Castillo” que emergiera desde la tierra, su primer vino reserva: Castillo de Molina.', 'Hace 150 años, los hermanos españoles Correa Albano fundaron Viña San Pedro en Molina, Chile. Al llegar a la cima más alta de sus tierras, maravillados contemplaron su majestuoso entorno. En ese instante, decidieron perpetuar esa sublime riqueza, en un “Castillo” que emergiera desde la tierra, su primer vino reserva: Castillo de Molina.'),
-(22, 'nosotros', 'enologia', 'Título', 'Title', 'Enología', 'Enología'),
-(23, 'nosotros', 'enologia', 'Texto 1', 'Text 1', 'Para cada cepa existe un valle que expresa a la perfección nuestra búsqueda de vinos de excelencia.', 'Para cada cepa existe un valle que expresa a la perfección nuestra búsqueda de vinos de excelencia.'),
-(24, 'nosotros', 'valles', 'Título', 'Title', 'Valles', 'Valles'),
-(25, 'nosotros', 'valles', 'Texto 1', 'Text 2', 'Castillo de Molina ha alcanzado una reconocida posición a nivel mundial, entre los mejores vinos chilenos en su segmento.', 'Castillo de Molina ha alcanzado una reconocida posición a nivel mundial, entre los mejores vinos chilenos en su segmento.'),
-(26, 'nosotros', 'valles', 'Texto valle Casa Blanca', 'Text valley Casa Blanca', 'Casablanca es tal vez el más conocido de los valles fríos chilenos, a 18 km en línea recta del mar y rodeado por la Cordillera de la Costa. Tiene clara influencia marítima y cada día se presenta una neblina matinal llamada "camanchaca".', 'Casablanca es tal vez el más conocido de los valles fríos chilenos, a 18 km en línea recta del mar y rodeado por la Cordillera de la Costa. Tiene clara influencia marítima y cada día se presenta una neblina matinal llamada "camanchaca".'),
-(27, 'nosotros', 'valles', 'Texto valle Elqui', 'Text valley Elqui', 'El Valle del Elqui está ubicado al norte de Chile y sus vides crecen bajo una poderosa influencia marina ya que están ubicadas a 20 km en línea recta del mar. Todas las mañanas, cubre los viñedos una nubosidad proveniente del mar hasta el medio día favoreciendo el clima fresco junto a una buena ventilación debido al fuerte viento del área. Sus suelos contienen un alto contenido mineral que le confieren una única identidad enológica a los Sauvignon Blanc. Castillo de Molina fue el primer Sauvignon Blanc de origen Valle de Elqui, siendo un éxito rotundo alrededor del mundo.', 'El Valle del Elqui está ubicado al norte de Chile y sus vides crecen bajo una poderosa influencia marina ya que están ubicadas a 20 km en línea recta del mar. Todas las mañanas, cubre los viñedos una nubosidad proveniente del mar hasta el medio día favoreciendo el clima fresco junto a una buena ventilación debido al fuerte viento del área. Sus suelos contienen un alto contenido mineral que le confieren una única identidad enológica a los Sauvignon Blanc. Castillo de Molina fue el primer Sauvignon Blanc de origen Valle de Elqui, siendo un éxito rotundo alrededor del mundo.'),
-(28, 'nosotros', 'valles', 'Texto valle Rapel', 'Text valley Rapel', 'Ubicado al sur de Chile, nos encontramos con un valle generoso y de de suelos esponjosos, arcillosos y rocosos, donde se producen inmejorables vinos de variedad tinta como el Cabernet Sauvignon y Merlot. Este valle posee un clima Mediterráneo, con una gran oscilación térmica entre el día y la noche de casi 20°C y su verano es seco con un alto promedio de temperaturas, cercano a los 25°C.', 'Ubicado al sur de Chile, nos encontramos con un valle generoso y de de suelos esponjosos, arcillosos y rocosos, donde se producen inmejorables vinos de variedad tinta como el Cabernet Sauvignon y Merlot. Este valle posee un clima Mediterráneo, con una gran oscilación térmica entre el día y la noche de casi 20°C y su verano es seco con un alto promedio de temperaturas, cercano a los 25°C.'),
-(29, 'nosotros', 'valles', 'Texto valle Maule', 'Text valley Maule', 'En el Valle del Maule se encuentra la localidad de Pencahue, un área conocida por su clima cálido-seco y por sus irregulares suelos rocosos. En tal ambiente, los Syrah de clima cálido y los Carmenère prueban su temple cultivados en secano, de excelente acidez natural y elegancia.', 'En el Valle del Maule se encuentra la localidad de Pencahue, un área conocida por su clima cálido-seco y por sus irregulares suelos rocosos. En tal ambiente, los Syrah de clima cálido y los Carmenère prueban su temple cultivados en secano, de excelente acidez natural y elegancia.'),
-(30, 'nosotros', 'valles', 'Texto valle Curicó', 'Text valley Curicó', 'El Valle de Curicó se encuadra dentro de la región vitícola del Valle Central, situado en la Región del Maule. Este clima se caracteriza por la alta variación de temperatura entre el día y la noche. En las áreas más frescas se producen vinos Pinot Noir de calidad única. Los viñedos están plantados en una zona de lomajes suaves, en suelos de granito en descomposición sobre tobas volcanicas.', 'El Valle de Curicó se encuadra dentro de la región vitícola del Valle Central, situado en la Región del Maule. Este clima se caracteriza por la alta variación de temperatura entre el día y la noche. En las áreas más frescas se producen vinos Pinot Noir de calidad única. Los viñedos están plantados en una zona de lomajes suaves, en suelos de granito en descomposición sobre tobas volcanicas.'),
-(31, 'nosotros', 'valles', 'Texto 2', 'Text 2', 'Busca constantemente descubrir el mejor origen específico para cada una de sus variedades y así obtener la máxima expresión en cada una de ellas.', 'Busca constantemente descubrir el mejor origen específico para cada una de sus variedades y así obtener la máxima expresión en cada una de ellas.'),
-(32, 'cell_parking', '', 'Título', 'Title', 'Cell Parking', 'Cell Parking'),
-(33, 'cell_parking', '', 'Texto 1', 'Text 1', 'MILES DE PERSONAS EN EL MUNDO SE ESTÁN COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.', 'MILES DE PERSONAS EN EL MUNDO SE ESTÁN COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.'),
-(34, 'cell_parking', '', 'Texto 2', 'Text 2', 'Están dispuestas a cambiar el chat por una buena conversación con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquí y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que está presente, y no a través de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, así mismo como nuestras vidas que no pueden transcurrir en la vorágine sin que nos detengamos a gozar de cada instante que ella nos regala.', 'Están dispuestas a cambiar el chat por una buena conversación con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquí y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que está presente, y no a través de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, así mismo como nuestras vidas que no pueden transcurrir en la vorágine sin que nos detengamos a gozar de cada instante que ella nos regala.'),
-(35, 'cell_parking', '', 'Título 2', 'Title 2', 'CELL PARKING EN EL MUNDO', 'CELL PARKING EN EL MUNDO'),
-(36, 'cell_parking', '', 'Título 3', 'Title 3', 'MILES DE PERSONAS EN EL MUNDO SE ESTÁN COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.', 'MILES DE PERSONAS EN EL MUNDO SE ESTÁN COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.'),
-(37, 'cell_parking', '', 'Texto 3', 'Text 3', 'Están dispuestas a cambiar el chat por una buena conversación con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquí y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que está presente, y no a través de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, así mismo como nuestras vidas que no pueden transcurrir en la vorágine sin que nos detengamos a gozar de cada instante que ella nos regala.', 'Están dispuestas a cambiar el chat por una buena conversación con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquí y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que está presente, y no a través de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, así mismo como nuestras vidas que no pueden transcurrir en la vorágine sin que nos detengamos a gozar de cada instante que ella nos regala.'),
-(38, 'contactos', '', 'Título', 'Title', 'Contacto', 'Contacto'),
-(39, 'contactos', '', 'Texto 1', 'Text 1', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'),
-(40, 'contactos', '', 'Título redes', 'Title networks', 'Síguenos:', 'Síguenos:'),
-(41, 'contactos', '', 'Título campo nombre', 'Title field name', 'Nombre*', 'Nombre*'),
-(42, 'contactos', '', 'Título campo Email', 'Title field Email', 'Email*', 'Email*'),
-(43, 'contactos', '', 'Título campo Comentario', 'Title field Comment', 'Comentario', 'Comentario'),
-(44, 'contactos', '', 'Botón Enviar mensaje', 'Button Send message', 'Enviar', 'Enviar'),
-(45, 'contactos', '', 'Texto campos obligatorios', 'Text required fields', '* Campos obligatorios', '* Campos obligatorios');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `noticias`
---
-
-CREATE TABLE IF NOT EXISTS `noticias` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cod_idioma` int(11) NOT NULL,
-  `titulo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `fecha` date NOT NULL,
-  `texto` longtext COLLATE utf8_spanish_ci NOT NULL,
-  `img` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `img` (`img`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `secciones`
---
-
-CREATE TABLE IF NOT EXISTS `secciones` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `esp` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `eng` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
-
---
--- Volcado de datos para la tabla `secciones`
---
-
-INSERT INTO `secciones` (`id`, `nombre`, `esp`, `eng`) VALUES
-(1, 'menu', 'Menú y verificación de edad', 'Menu and age verification'),
-(2, 'nosotros', 'Nosotros', 'Us'),
-(3, 'noticias', 'Noticias', 'News'),
-(4, 'vinos', 'Vinos', 'Wines'),
-(5, 'cell_parking', 'Cell Parking', 'Cell Parking'),
-(6, 'contactos', 'Contacto', 'Contact');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `subsecciones`
---
-
-CREATE TABLE IF NOT EXISTS `subsecciones` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cod_seccion` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `esp` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `eng` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=9 ;
-
---
--- Volcado de datos para la tabla `subsecciones`
---
-
-INSERT INTO `subsecciones` (`id`, `cod_seccion`, `nombre`, `esp`, `eng`) VALUES
-(1, 'menu', 'opciones', 'Opciones del menú', 'Menu options'),
-(2, 'menu', 'edad', 'Verificación de edad', 'Age verification'),
-(3, 'nosotros', 'intro_dia', 'Texto intro dia', 'Intro text day'),
-(4, 'nosotros', 'nosotros', 'Nosotros', 'Us'),
-(5, 'nosotros', 'intro_noche', 'Texto intro noche', 'Intro text night'),
-(6, 'nosotros', 'historia', 'Historia', 'History'),
-(7, 'nosotros', 'valles', 'Valles', 'Valleys'),
-(8, 'nosotros', 'enologia', 'Enología', 'Oenology');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `vinos`
---
-
-CREATE TABLE IF NOT EXISTS `vinos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cod_idioma` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `nombre` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `slide` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `horizontal` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `img_dia` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `img_noche` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `zip` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `titulo_origen` text COLLATE utf8_spanish_ci NOT NULL,
-  `texto_origen` longtext COLLATE utf8_spanish_ci NOT NULL,
-  `titulo_vendimia` text COLLATE utf8_spanish_ci NOT NULL,
-  `texto_vendimia` longtext COLLATE utf8_spanish_ci NOT NULL,
-  `titulo_clima` text COLLATE utf8_spanish_ci NOT NULL,
-  `texto_clima` longtext COLLATE utf8_spanish_ci NOT NULL,
-  `titulo_vinificacion` text COLLATE utf8_spanish_ci NOT NULL,
-  `texto_vinificacion` longtext COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+INSERT INTO `items` (`id`, `cod_seccion`, `cod_sub_seccion`, `text`, `nombre_esp`, `nombre_eng`, `esp`, `eng`) VALUES
+(1, 'menu', 'opciones', '', 'Nosotros', 'Us', 'Nosotros', 'Us'),
+(2, 'menu', 'opciones', '', 'Historia', 'History', 'Historia', 'History'),
+(3, 'menu', 'opciones', '', 'Valles', 'Valleys', 'Valles', 'Valleys'),
+(4, 'menu', 'opciones', '', 'Enología', 'Oenology', 'EnologÃ­a', 'Oenology'),
+(5, 'menu', 'opciones', '', 'Noticias', 'News', 'Noticias', 'News'),
+(6, 'menu', 'opciones', '', 'Vinos', 'Wines', 'Vinos', 'Wines'),
+(7, 'menu ', 'opciones', '', 'Cell Parking', 'Cell Parking', 'Cell Parking', 'Cell'),
+(8, 'menu', 'opciones', '', 'Contacto', 'Contact', 'Contacto', 'Contact'),
+(9, 'menu', 'edad', 'si', 'Título', 'Title', 'Verifique su edad', 'Verifique su edad'),
+(10, 'menu', 'edad', 'si', 'Condición', 'Condition', 'Debe ser mayor de 18 aÃ±os para visitar el sitio', 'Debe ser mayor de 18 aÃ±os para visitar el sitio'),
+(11, 'menu', 'edad', 'si', 'Texto botón', 'Button text', 'Soy mayor de 18 aÃ±os', 'Soy mayor de 18 aÃ±os'),
+(12, 'nosotros', 'intro_dia', '', 'Título', 'Title', 'Este puede ser tu mejor día', 'Este puede ser tu mejor día'),
+(13, 'nosotros', 'intro_dia', '', 'Texto', 'Text', 'Cualquier momento puede ser bueno si sabes disfrutarlo. Desconéctate y aprovecha tu energía del día, para disfrutar un gran momento junto a Castillo de Molina.', 'Cualquier momento puede ser bueno si sabes disfrutarlo. Desconéctate y aprovecha tu energía del día, para disfrutar un gran momento junto a Castillo de Molina.'),
+(14, 'nosotros', 'intro_noche', '', 'Título', 'Title', 'Esta puede ser tu mejor noche', 'Esta puede ser tu mejor noche'),
+(15, 'nosotros', 'intro_noche', '', 'Texto', 'Text', 'Si estás en casa, invita a tus amigos a cocinar algo nuevo o simplemente a descorchar una botella de buen vino y disfrutar del aquí y el ahora.', 'Si estás en casa, invita a tus amigos a cocinar algo nuevo o simplemente a descorchar una botella de buen vino y disfrutar del aquí y el ahora.'),
+(16, 'nosotros', 'nosotros', '', 'Título', 'Title', 'Nosotros', 'Us'),
+(17, 'nosotros', 'nosotros', '', 'Texto 1', 'Text 1', 'Castillo de Molina nace como la primer línea Reserva de Viña San Pedro, con una especial dedicación a la calidad e innovación, tomando con calma y cuidadosamente la búsqueda incansable de los mejores valles de Chile.', 'Castillo de Molina nace como la primer línea Reserva de Viña San Pedro, con una especial dedicación a la calidad e innovación, tomando con calma y cuidadosamente la búsqueda incansable de los mejores valles de Chile.'),
+(18, 'nosotros', 'nosotros', '', 'Texto 2 ', 'Text 2', 'Castillo de Molina plantea el disfrutar a cada momento, en cada lugar, porque la vida es una vorágine, pero la vida es ahora.', 'Castillo de Molina plantea el disfrutar a cada momento, en cada lugar, porque la vida es una vorágine, pero la vida es ahora.'),
+(19, 'nosotros', 'historia', '', 'Título', 'Title', 'Historia', 'History'),
+(20, 'nosotros', 'historia', '', 'Texto 1', 'Text 1', '“Se dice que los mejores vinos del mundo provienen de un château, un castillo”', '“Se dice que los mejores vinos del mundo provienen de un château, un castillo”'),
+(21, 'nosotros', 'historia', '', 'Texto 2', 'Text 2', 'Hace 150 años, los hermanos españoles Correa Albano fundaron Viña San Pedro en Molina, Chile. Al llegar a la cima más alta de sus tierras, maravillados contemplaron su majestuoso entorno. En ese instante, decidieron perpetuar esa sublime riqueza, en un “Castillo” que emergiera desde la tierra, su primer vino reserva: Castillo de Molina.', 'Hace 150 años, los hermanos españoles Correa Albano fundaron Viña San Pedro en Molina, Chile. Al llegar a la cima más alta de sus tierras, maravillados contemplaron su majestuoso entorno. En ese instante, decidieron perpetuar esa sublime riqueza, en un “Castillo” que emergiera desde la tierra, su primer vino reserva: Castillo de Molina.'),
+(22, 'nosotros', 'enologia', '', 'Título', 'Title', 'Enología', 'Enología'),
+(23, 'nosotros', 'enologia', '', 'Texto 1', 'Text 1', 'Para cada cepa existe un valle que expresa a la perfección nuestra búsqueda de vinos de excelencia.', 'Para cada cepa existe un valle que expresa a la perfección nuestra búsqueda de vinos de excelencia.'),
+(24, 'nosotros', 'valles', '', 'Título', 'Title', 'Valles', 'Valles'),
+(25, 'nosotros', 'valles', '', 'Texto 1', 'Text 2', 'Castillo de Molina ha alcanzado una reconocida posición a nivel mundial, entre los mejores vinos chilenos en su segmento.', 'Castillo de Molina ha alcanzado una reconocida posición a nivel mundial, entre los mejores vinos chilenos en su segmento.'),
+(26, 'nosotros', 'valles', '', 'Texto valle Casa Blanca', 'Text valley Casa Blanca', 'Casablanca es tal vez el más conocido de los valles fríos chilenos, a 18 km en línea recta del mar y rodeado por la Cordillera de la Costa. Tiene clara influencia marítima y cada día se presenta una neblina matinal llamada "camanchaca".', 'Casablanca es tal vez el más conocido de los valles fríos chilenos, a 18 km en línea recta del mar y rodeado por la Cordillera de la Costa. Tiene clara influencia marítima y cada día se presenta una neblina matinal llamada "camanchaca".'),
+(27, 'nosotros', 'valles', '', 'Texto valle Elqui', 'Text valley Elqui', 'El Valle del Elqui está ubicado al norte de Chile y sus vides crecen bajo una poderosa influencia marina ya que están ubicadas a 20 km en línea recta del mar. Todas las mañanas, cubre los viñedos una nubosidad proveniente del mar hasta el medio día favoreciendo el clima fresco junto a una buena ventilación debido al fuerte viento del área. Sus suelos contienen un alto contenido mineral que le confieren una única identidad enológica a los Sauvignon Blanc. Castillo de Molina fue el primer Sauvignon Blanc de origen Valle de Elqui, siendo un éxito rotundo alrededor del mundo.', 'El Valle del Elqui está ubicado al norte de Chile y sus vides crecen bajo una poderosa influencia marina ya que están ubicadas a 20 km en línea recta del mar. Todas las mañanas, cubre los viñedos una nubosidad proveniente del mar hasta el medio día favoreciendo el clima fresco junto a una buena ventilación debido al fuerte viento del área. Sus suelos contienen un alto contenido mineral que le confieren una única identidad enológica a los Sauvignon Blanc. Castillo de Molina fue el primer Sauvignon Blanc de origen Valle de Elqui, siendo un éxito rotundo alrededor del mundo.'),
+(28, 'nosotros', 'valles', '', 'Texto valle Rapel', 'Text valley Rapel', 'Ubicado al sur de Chile, nos encontramos con un valle generoso y de de suelos esponjosos, arcillosos y rocosos, donde se producen inmejorables vinos de variedad tinta como el Cabernet Sauvignon y Merlot. Este valle posee un clima Mediterráneo, con una gran oscilación térmica entre el día y la noche de casi 20°C y su verano es seco con un alto promedio de temperaturas, cercano a los 25°C.', 'Ubicado al sur de Chile, nos encontramos con un valle generoso y de de suelos esponjosos, arcillosos y rocosos, donde se producen inmejorables vinos de variedad tinta como el Cabernet Sauvignon y Merlot. Este valle posee un clima Mediterráneo, con una gran oscilación térmica entre el día y la noche de casi 20°C y su verano es seco con un alto promedio de temperaturas, cercano a los 25°C.'),
+(29, 'nosotros', 'valles', '', 'Texto valle Maule', 'Text valley Maule', 'En el Valle del Maule se encuentra la localidad de Pencahue, un área conocida por su clima cálido-seco y por sus irregulares suelos rocosos. En tal ambiente, los Syrah de clima cálido y los Carmenère prueban su temple cultivados en secano, de excelente acidez natural y elegancia.', 'En el Valle del Maule se encuentra la localidad de Pencahue, un área conocida por su clima cálido-seco y por sus irregulares suelos rocosos. En tal ambiente, los Syrah de clima cálido y los Carmenère prueban su temple cultivados en secano, de excelente acidez natural y elegancia.'),
+(30, 'nosotros', 'valles', '', 'Texto valle Curicó', 'Text valley Curicó', 'El Valle de Curicó se encuadra dentro de la región vitícola del Valle Central, situado en la Región del Maule. Este clima se caracteriza por la alta variación de temperatura entre el día y la noche. En las áreas más frescas se producen vinos Pinot Noir de calidad única. Los viñedos están plantados en una zona de lomajes suaves, en suelos de granito en descomposición sobre tobas volcanicas.', 'El Valle de Curicó se encuadra dentro de la región vitícola del Valle Central, situado en la Región del Maule. Este clima se caracteriza por la alta variación de temperatura entre el día y la noche. En las áreas más frescas se producen vinos Pinot Noir de calidad única. Los viñedos están plantados en una zona de lomajes suaves, en suelos de granito en descomposición sobre tobas volcanicas.'),
+(31, 'nosotros', 'valles', '', 'Texto 2', 'Text 2', 'Busca constantemente descubrir el mejor origen específico para cada una de sus variedades y así obtener la máxima expresión en cada una de ellas.', 'Busca constantemente descubrir el mejor origen específico para cada una de sus variedades y así obtener la máxima expresión en cada una de ellas.'),
+(32, 'cell_parking', '', '', 'Título', 'Title', 'Cell Parking', 'Cell Parking'),
+(33, 'cell_parking', '', '', 'Texto 1', 'Text 1', 'MILES DE PERSONAS EN EL MUNDO SE ESTÁN COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.', 'MILES DE PERSONAS EN EL MUNDO SE ESTÁN COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.'),
+(34, 'cell_parking', '', '', 'Texto 2', 'Text 2', 'Están dispuestas a cambiar el chat por una buena conversación con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquí y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que está presente, y no a través de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, así mismo como nuestras vidas que no pueden transcurrir en la vorágine sin que nos detengamos a gozar de cada instante que ella nos regala.', 'Están dispuestas a cambiar el chat por una buena conversación con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquí y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que está presente, y no a través de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, así mismo como nuestras vidas que no pueden transcurrir en la vorágine sin que nos detengamos a gozar de cada instante que ella nos regala.'),
+(35, 'cell_parking', '', '', 'Título 2', 'Title 2', 'CELL PARKING EN EL MUNDO', 'CELL PARKING EN EL MUNDO'),
+(36, 'cell_parking', '', '', 'Título 3', 'Title 3', 'MILES DE PERSONAS EN EL MUNDO SE ESTÁN COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.', 'MILES DE PERSONAS EN EL MUNDO SE ESTÁN COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.'),
+(37, 'cell_parking', '', '', 'Texto 3', 'Text 3', 'Están dispuestas a cambiar el chat por una buena conversación con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquí y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que está presente, y no a través de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, así mismo como nuestras vidas que no pueden transcurrir en la vorágine sin que nos detengamos a gozar de cada instante que ella nos regala.', 'Están dispuestas a cambiar el chat por una buena conversación con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquí y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que está presente, y no a través de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, así mismo como nuestras vidas que no pueden transcurrir en la vorágine sin que nos detengamos a gozar de cada instante que ella nos regala.'),
+(38, 'contactos', '', '', 'Título', 'Title', 'Contacto', 'Contacto'),
+(39, 'contactos', '', '', 'Texto 1', 'Text 1', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'),
+(40, 'contactos', '', '', 'Título redes', 'Title networks', 'Síguenos:', 'Síguenos:'),
+(41, 'contactos', '', '', 'Título campo nombre', 'Title field name', 'Nombre*', 'Nombre*'),
+(42, 'contactos', '', '', 'Título campo Email', 'Title field Email', 'Email*', 'Email*'),
+(43, 'contactos', '', '', 'Título campo Comentario', 'Title field Comment', 'Comentario', 'Comentario'),
+(44, 'contactos', '', '', 'Botón Enviar mensaje', 'Button Send message', 'Enviar', 'Enviar'),
+(45, 'contactos', '', '', 'Texto campos obligatorios', 'Text required fields', '* Campos obligatorios', '* Campos obligatorios');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
