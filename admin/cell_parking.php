@@ -21,7 +21,7 @@
         Sql_update('items',$valores,array('id' => $id));
       }
     }
-    header("location: cell_parking.php?idioma=".$post['idioma']);
+    header("location: cell_parking.php?idioma=".$post['idioma'].'&operacion=exito');
     exit;
   }
 
@@ -37,6 +37,20 @@
     <div id="page-wrapper">
       <div class="container-fluid">
         <!-- Page Heading -->
+        <?php if($get['operacion'] == 'exito')
+        { ?>
+          <div class="alert alert-success alert-dismissible fade in">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4>
+              <?php if($get['idioma'] == 'esp'){
+              echo "*Operación realizada con éxito.";
+              }else {
+                echo "Successful operation"; } ?>
+            </h4>
+          </div>
+        <?php } ?>
         <div class="row">
           <div class="col-lg-12">
             <h1 class="page-header">
@@ -62,7 +76,7 @@
                     </div>
                   <?php } ?>
                   <div class="form-group text-right">
-                      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                      <button type="submit" class="btn btn-primary"><?php echo $get['idioma'] == 'esp'?'Guardar cambios':'Save changes'; ?></button>
                   </div>
                 </div>
             </form>

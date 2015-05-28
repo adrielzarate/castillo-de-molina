@@ -1,207 +1,135 @@
+<?php
+  include('mysql/mysql.php');
+  include('includes/funciones.php');
+
+  $get = LimpiarGET();
+  $post = LimpiarPOST();
+  
+  ControlAdmin();
+  
+  $pag_actual = 'noticias';
+
+  if(isset($get['id_noticia']))
+  {
+    $noticia = Sql_select('noticias',array('id' => $get['id_noticia']),'=');
+    $noticia = $noticia[0];
+  }
+
+
+  if(isset($post["titulo"]))
+  {
+    $valores['titulo'] = $post['titulo'];
+    $valores['texto'] = $post['texto'];
+    $valores['cod_idioma'] = $post['idioma'];
+    $valores['fecha'] = $post['fecha'];
+    $valores['link'] = $post['link'];
+    
+    if($post['id_noticia'] == '')
+    {
+      Sql_insertar('noticias',$valores);
+    }
+    else
+    {
+      Sql_update('noticias',$valores,array('id' => $post['id_noticia']));
+    }
+    header("location: noticias.php?idioma=".$post['idioma']."&operacion=exito");
+    exit;
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Castillo de Molina - Admin</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../../css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../../css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="../../css/plugins/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+  <?php include("includes/head.php"); ?>
 </head>
-
 <body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Castillo de Molina - Admin</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Bienvenido <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <!-- <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li> -->
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.html"><i class="fa fa-home"></i> Inicio</a>
-                    </li>
-<!--                     <li>
-                        <a href="charts.html"><i class="fa fa-newspaper-o"></i> Editar noticias</a>
-                    </li> -->
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#espanol"><i class="fa fa-comments"></i> Editar español <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="espanol" class="collapse">
-                            <li>
-                                <a href="editar/espanol/menu.html">Menú y verificación edad</a>
-                            </li>
-                            <li>
-                                <a href="editar/espanol/home.html">Home</a>
-                            </li>
-                            <li>
-                                <a href="editar/espanol/noticias.html">Noticias</a>
-                            </li>
-                            <li>
-                                <a href="editar/espanol/vinos.html">Vinos</a>
-                            </li>
-                            <li>
-                                <a href="editar/espanol/cellparking.html">Cell Parking</a>
-                            </li>
-                            <li>
-                                <a href="editar/espanol/contacto.html">Contacto</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#ingles"><i class="fa fa-comments"></i> Editar inglés <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="ingles" class="collapse">
-                            <li>
-                                <a href="editar/ingles/menu.html">Menú y verificación edad</a>
-                            </li>
-                            <li>
-                                <a href="editar/ingles/home.html">Home</a>
-                            </li>
-                            <li>
-                                <a href="editar/ingles/noticias.html">Noticias</a>
-                            </li>
-                            <li>
-                                <a href="editar/ingles/vinos.html">Vinos</a>
-                            </li>
-                            <li>
-                                <a href="editar/ingles/cellparking.html">Cell Parking</a>
-                            </li>
-                            <li>
-                                <a href="editar/ingles/contacto.html">Contacto</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-
-        <div id="page-wrapper">
-
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Editar Noticia
-                        </h1>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-12">
-
-                        <form role="form">
-
-                            <div class="col-md-6">
-                                <br>
-                                <div class="form-group">
-                                    <label>Imagen de la noticia</label>
-                                    <input type="file">
-                                    <p class="help-block">La imagen debe ser de 650x190 pixels</p>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Título</label>
-                                    <input class="form-control" placeholder="Título de la noticia" >
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Fecha</label>
-                                    <input class="form-control" placeholder="1 de enero de 2015" >
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Texto</label>
-                                    <textarea class="form-control" rows="3" placeholder="Texto de la noticia"></textarea>
-                                </div>
-
-                                <div class="form-group text-right">
-                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                                </div>
-
-                        </form>
-
-                    </div>
-
-                </div>
-                <!-- /.row -->
-
-            </div>
-            <!-- /.container-fluid -->
-
+  <div id="wrapper">
+    <?php include("includes/header.php"); ?>
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="page-header">
+              <?php echo $get["idioma"] == "esp"?"Editar noticia":"Edit news"; ?>
+            </h1>
+          </div>
         </div>
-        <!-- /#page-wrapper -->
-
+        <!-- /.row -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div id="error" class="alert alert-danger alert-dismissible fade in" style="display:none;">
+              <h4>
+                <?php if($get['idioma'] == 'esp'){
+                echo "*El campo título y texto son obligatorios.";
+                }else {
+                  echo "The title and text field are required"; } ?>
+              </h4>
+            </div>
+            <form role="form" method="post" id="form">
+              <input type="hidden" name="idioma" value="<?php echo $get['idioma']; ?>">
+              <input type="hidden" name="id_noticia" value="<?php echo $get['id_noticia']; ?>">
+              <div class="col-md-6">
+                <br>
+                <div class="form-group">
+                  <label><?php echo $get["idioma"] == "esp"?"Imagen de la noticia":"News image"; ?></label>
+                  <input type="file">
+                  <p class="help-block"><?php echo $get["idioma"] == "esp"?"La imagen debe ser de ":"Image should be "; ?>650x190 pixels</p>
+                </div>
+                <div class="form-group">
+                  <label><?php echo $get["idioma"] == "esp"?"Título":"Title"; ?></label>
+                  <input type="text" name="titulo" id="titulo" value="<?php echo $noticia['titulo']; ?>" class="form-control" placeholder="<?php echo $get['idioma'] == 'esp'?'Título de la noticia':'News title'; ?>" >
+                </div>
+                <div class="form-group">
+                  <label><?php echo $get['idioma'] == 'esp'?'Fecha':'Date'; ?></label>
+                  <input data-provide="datepicker" class="form-control datepicker" name="fecha" value="<?php echo $noticia['fecha']; ?>" >
+                </div>
+                <div class="form-group">
+                  <label><?php echo $get['idioma'] == 'esp'?'Texto':'Text'; ?></label>
+                  <textarea name="texto" id="texto" class="form-control" rows="3" placeholder="<?php echo $get['idioma'] == 'esp'?'Texto de la noticia':'News text'; ?>"><?php echo $noticia['texto']; ?></textarea>
+                </div>
+                <div class="form-group">
+                  <label><?php echo $get["idioma"] == "esp"?"Link a la noticia":"Link to the news"; ?></label>
+                  <input type="text" name="link" id="link" value="<?php echo $noticia['link']; ?>" class="form-control" placeholder="<?php echo $get['idioma'] == 'esp'?'Link':'Link'; ?>" >
+                </div>
+                <div class="form-group text-right">
+                  <button type="submit" class="btn btn-primary"><?php echo $get['idioma'] == 'esp'?'Guardar cambios':'Save changes'; ?></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
     </div>
-    <!-- /#wrapper -->
+    <!-- /#page-wrapper -->
+  </div>
+  <!-- /#wrapper -->
+  <?php include("includes/footer.php"); ?>
+  <script type="text/javascript">
+    $('#form').submit(function(){
+      $('#error').hide();
+      error = false;
+      
+      if($('#titulo').val() == '' || $('#texto').val() == '')
+      {
+        error = true;
+      }
 
-    <!-- jQuery -->
-    <script src="../../js/jquery.js"></script>
+      if(error){
+        $('#error').show();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+      }
+    });
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../../js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="../../js/plugins/morris/raphael.min.js"></script>
-    <script src="../../js/plugins/morris/morris.min.js"></script>
-    <script src="../../js/plugins/morris/morris-data.js"></script>
+    $('.datepicker').datepicker({
+      format: 'yyyy-mm-dd'
+    });
+    
+  </script>
 
 </body>
-
 </html>

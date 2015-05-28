@@ -8,6 +8,7 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/plugins/datepicker.css" rel="stylesheet">
 
 <!-- Custom CSS -->
 <link href="css/sb-admin.css" rel="stylesheet">
