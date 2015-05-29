@@ -17,7 +17,6 @@
             <div class="row">
                 <div class="col-xs-12 col-md-10 col-md-offset-1 text-center">
                     <h2>¿Quiéres disfrutar?</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                 </div>
             </div>
         </div>

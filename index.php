@@ -14,6 +14,7 @@
         <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-select.min.css">
         <link rel="stylesheet" href="css/default_skin.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -133,7 +134,37 @@
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=es"></script>
         <script src="js/vendor/jquery-1.11.0.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/bootstrap-select.js"></script>
         <script src="js/vendor/source/js/jquery.sky.carousel-1.0.2.min.js"></script>
         <script src="js/main.js"></script>
+        <script>
+          window.onload=function(){
+          $('.selectpicker').selectpicker();
+          $('.rm-mustard').click(function() {
+            $('.remove-example').find('[value=Mustard]').remove();
+            $('.remove-example').selectpicker('refresh');
+          });
+          $('.rm-ketchup').click(function() {
+            $('.remove-example').find('[value=Ketchup]').remove();
+            $('.remove-example').selectpicker('refresh');
+          });
+          $('.rm-relish').click(function() {
+            $('.remove-example').find('[value=Relish]').remove();
+            $('.remove-example').selectpicker('refresh');
+          });
+          $('.ex-disable').click(function() {
+              $('.disable-example').prop('disabled',true);
+              $('.disable-example').selectpicker('refresh');
+          });
+          $('.ex-enable').click(function() {
+              $('.disable-example').prop('disabled',false);
+              $('.disable-example').selectpicker('refresh');
+          });
+
+          // scrollYou
+          $('.scrollMe .dropdown-menu').scrollyou();
+            prettyPrint();
+          };
+        </script>
     </body>
 </html>

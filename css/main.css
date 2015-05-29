@@ -302,10 +302,29 @@ main {
 .field-fixed{
   background-image: url(../img/field-fixed.jpg);
 }
+.dark-cava{
+  background-image: url(../img/dark-cava.jpg);
+}
+.dark-cava.img-section{
+  padding: 40px;
+  margin-top: 0;
+  color: #fff;
+}
+.dark-cava h3 {
+  margin-top: 12%;
+  font-size: 26px;
+}
+.dark-cava h3 em {
+  font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: 0;
+}
 .img-section {
   margin: 80px 0 0;
   min-height:500px;
   padding:0;
+  font-size: 24px;
 }
 #wines-content .intro {
   height: 100%;
@@ -1170,6 +1189,10 @@ ul.nav > ul{
   color: #000;
 }
 
+#cellparking-content .intro .container p {
+  font-style: normal;
+}
+
 #cellparking-content #cellparking-map-section {
   min-height: 600px;
   height: 75%;
@@ -1600,6 +1623,8 @@ body.night #cellparking-content .intro .container p {
 
 #check-age em {
   font-size: 24px;
+  margin-bottom: 20px;
+  display: block;
 }
 
 #check-age a {
@@ -1617,6 +1642,34 @@ body.night #cellparking-content .intro .container p {
 
 #check-age .col-sm-12 {
   margin-bottom: 100px;
+}
+
+#check-age .form-group input[type="checkbox"] {
+    display: none;
+}
+
+#check-age .form-group input[type="checkbox"] + .btn-group > label.active {
+    background-color: #a16345;
+    border: #a16345 solid thin;
+    color:  #fff;
+}
+
+#check-age .form-group input[type="checkbox"] + .btn-group > label span {
+    width: 20px;
+}
+
+#check-age .form-group input[type="checkbox"] + .btn-group > label span:first-child {
+    display: none;
+}
+#check-age .form-group input[type="checkbox"] + .btn-group > label span:last-child {
+    display: inline-block;
+}
+
+#check-age .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+    display: inline-block;
+}
+#check-age .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+    display: none;
 }
 
 .pagination > li > a,
