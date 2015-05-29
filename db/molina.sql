@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-05-2015 a las 22:42:50
+-- Tiempo de generación: 29-05-2015 a las 00:57:44
 -- Versión del servidor: 5.5.43-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.9
 
@@ -34,14 +34,15 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   `apellido` varchar(11) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user` (`user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `administradores`
 --
 
 INSERT INTO `administradores` (`user`, `id`, `pass`, `nombre`, `apellido`) VALUES
-('admin', 1, '1234', '', '');
+('admin', 1, '1234', '', ''),
+('usuario', 2, '1234', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -140,15 +141,7 @@ CREATE TABLE IF NOT EXISTS `noticias` (
   `link` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `img` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=9 ;
-
---
--- Volcado de datos para la tabla `noticias`
---
-
-INSERT INTO `noticias` (`id`, `fecha`, `texto`, `cod_idioma`, `titulo`, `link`, `img`) VALUES
-(7, '2015-05-27', 'texto', 'esp', 'noticia 1', '', ''),
-(8, '2015-02-11', 'fsdfsdfsdfs', 'esp', 'noticia 2', 'www.facebook.com @', 'e53sf4j.jpg');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=12 ;
 
 -- --------------------------------------------------------
 
@@ -231,17 +224,7 @@ CREATE TABLE IF NOT EXISTS `vinos` (
   `titulo_vinificacion` text COLLATE utf8_spanish_ci NOT NULL,
   `texto_vinificacion` longtext COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=10 ;
-
---
--- Volcado de datos para la tabla `vinos`
---
-
-INSERT INTO `vinos` (`id`, `cod_idioma`, `nombre`, `slide`, `horizontal`, `img_dia`, `img_noche`, `zip`, `zip_nombre`, `titulo_origen`, `texto_origen`, `titulo_vendimia`, `texto_vendimia`, `titulo_clima`, `texto_clima`, `titulo_vinificacion`, `texto_vinificacion`) VALUES
-(2, 'esp', 'vinÃ³ 1', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(5, 'esp', 'viÃ±o 2', 'ty4bq63.jpg', 'gdo42ff.jpg', '6g9qkev.jpg', '4sktkol.jpg', '', '', 'titulo origen', 'texto origen', 'titulo vendimia', 'texto vendimiÃ¡Ã¡Ã¡Ã¡', 'titulo clima', 'texto climap', 'titulo vinificacion', 'texto vinificacion'),
-(6, 'eng', 'fdfsd', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(9, 'esp', '', '', '', '', '', 'go5leye.zip', 'datepicker.zip', '', '', '', '', '', '', '', '');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=11 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

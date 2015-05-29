@@ -61,6 +61,16 @@
         <!-- /.row -->
         <div class="row">
           <div class="col-lg-12">
+            <div id="error" class="panel panel-danger" style="display:none;">
+              <div class="panel-heading">
+                <h3>
+                  <?php if($get['idioma'] == 'esp'){
+                  echo "*No se pueden dejar campos en blanco.";
+                  }else {
+                    echo "*Fields can not be left blank"; } ?>
+                </h3>
+              </div>
+            </div>
             <form role="form" method="post" id="form">
               <input type="hidden" name="idioma" value=<?php echo $get['idioma']; ?>>
               <?php foreach($subsecciones as $subseccion) { ?>
@@ -93,5 +103,24 @@
   </div>
   <!-- /#wrapper -->
 <?php include("includes/footer.php"); ?>
+<script type="text/javascript">
+    $('#form').submit(function(){
+      $('#error').hide();
+      error = false;
+
+      $('.form-control').each(function(){
+        if($(this).val() == '')
+        {
+          error = true;
+        }
+      });
+
+      if(error){
+        $('#error').show();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+      }
+    });
+  </script>
 </body>
 </html>

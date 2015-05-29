@@ -67,7 +67,7 @@
                   <?php if($get['idioma'] == 'esp'){
                   echo "*No se pueden dejar campos en blanco.";
                   }else {
-                    echo "Fields can not be left blank"; } ?>
+                    echo "*Fields can not be left blank"; } ?>
                 </h3>
               </div>
             </div>
@@ -108,13 +108,12 @@
       $('#error').hide();
       error = false;
 
-      for(i=0; i < $('.form-control').length; i+=1)
-      {
-        if($('.form-control')[i].value == '')
+      $('.form-control').each(function(){
+        if($(this).val() == '')
         {
           error = true;
         }
-      }
+      });
 
       if(error){
         $('#error').show();

@@ -9,7 +9,7 @@
 						</li>
 					<?php }else{ ?>
 						<li>
-							<a href="<?php echo $pagina; ?>?page=0&search=<?php echo $search; ?>&order=<?php echo $order; ?>&order_by=<?php echo $order_by; ?>">《</a>
+							<a href="<?php echo $pagina; ?>?idioma=<?php echo $get['idioma'];?>&page=0&search=<?php echo $search; ?>&order=<?php echo $order; ?>&order_by=<?php echo $order_by; ?>">《</a>
 						</li>
 					<?php } ?>
 					<?php if($page<1){ ?>
@@ -18,7 +18,7 @@
 						</li>
 					<?php }else{ ?>
 						<li>
-							<a href="<?php echo $pagina; ?>?page=<?php echo $page-1; ?>&search=<?php echo $search; ?>&order=<?php echo $order; ?>&order_by=<?php echo $order_by; ?>">〈</a>
+							<a href="<?php echo $pagina; ?>?idioma=<?php echo $get['idioma'];?>&page=<?php echo $page-1; ?>&search=<?php echo $search; ?>&order=<?php echo $order; ?>&order_by=<?php echo $order_by; ?>">〈</a>
 						</li>
 					<?php } ?>
 					<?php for($i=0;$i<5;$i+=1){ 
@@ -36,7 +36,7 @@
 						<?php continue; } ?>
 						<?php if($d != $page){?>
 							<li>
-								<a href="<?php echo $pagina; ?>?page=<?php echo $d; ?>&search=<?php echo $search; ?>&order=<?php echo $order; ?>&order_by=<?php echo $order_by; ?>"><?php echo $d+1; ?></a>
+								<a href="<?php echo $pagina; ?>?idioma=<?php echo $get['idioma'];?>&page=<?php echo $d; ?>&search=<?php echo $search; ?>&order=<?php echo $order; ?>&order_by=<?php echo $order_by; ?>"><?php echo $d+1; ?></a>
 							</li>
 						<?php } ?>
 					<?php } ?>
@@ -46,7 +46,7 @@
 						</li>
 					<?php }else{ ?>
 						<li>
-							<a href="<?php echo $pagina; ?>?page=<?php echo $page+1; ?>&search=<?php echo $search; ?>&order=<?php echo $order; ?>&order_by=<?php echo $order_by; ?>">〉</a>
+							<a href="<?php echo $pagina; ?>?idioma=<?php echo $get['idioma'];?>&page=<?php echo $page+1; ?>&search=<?php echo $search; ?>&order=<?php echo $order; ?>&order_by=<?php echo $order_by; ?>">〉</a>
 						</li>
 					<?php } ?>
 					<?php if($page>$max_pag-2){ ?>
@@ -55,7 +55,7 @@
 						</li>
 					<?php }else{ ?>
 						<li>
-							<a href="<?php echo $pagina; ?>?page=<?php echo $max_pag-1; ?>&search=<?php echo $search; ?>&order=<?php echo $order; ?>&order_by=<?php echo $order_by; ?>">》</a>
+							<a href="<?php echo $pagina; ?>?idioma=<?php echo $get['idioma'];?>&page=<?php echo $max_pag-1; ?>&search=<?php echo $search; ?>&order=<?php echo $order; ?>&order_by=<?php echo $order_by; ?>">》</a>
 						</li>
 					<?php } ?>
 				</ul>

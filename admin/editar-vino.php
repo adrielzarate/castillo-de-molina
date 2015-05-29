@@ -128,12 +128,12 @@
             <div id="error" class="alert alert-danger alert-dismissible fade in" style="display:none;">
               <h4>
                 <?php if($get['idioma'] == 'esp'){
-                echo "*El campo título y texto son obligatorios.";
+                echo "*Todos los campos son obligatorios.";
                 }else {
-                  echo "The title and text field are required"; } ?>
+                  echo "*All fields are mandatory"; } ?>
               </h4>
             </div>
-            <form role="form" method="post" enctype="multipart/form-data">
+            <form role="form" method="post" enctype="multipart/form-data" id="form">
               <input type="hidden" name="idioma" value="<?php echo $get['idioma']; ?>">
               <input type="hidden" name="id_vino" value="<?php echo $vino['id']; ?>">
               <input type="hidden" id="imagen_slide_end" name="imagen_slide" value="">
@@ -301,6 +301,63 @@
   <link rel="stylesheet" type="text/css" href="css/cropper.css">
   <script type="text/javascript" src="js/cropper.js"></script>
   <script type="text/javascript">
+    
+    $('#form').submit(function(){
+      $('#error').hide();
+      error = false;
+
+      if($('#imagen_slide_end').val() == '')
+      {
+        if("<?php echo $vino['slide']; ?>" == '')
+        {
+          error = true;
+        }
+      }
+
+      if($('#imagen_horizontal_end').val() == '')
+      {
+        if("<?php echo $vino['horizontal']; ?>" == '')
+        {
+          error = true;
+        }
+      }
+
+      if($('#imagen_dia_end').val() == '')
+      {
+        if("<?php echo $vino['img_dia']; ?>" == '')
+        {
+          error = true;
+        }
+      }
+
+      if($('#imagen_noche_end').val() == '')
+      {
+        if("<?php echo $vino['img_noche']; ?>" == '')
+        {
+          error = true;
+        }
+      }
+      
+      $('.form-control').each(function(){
+        if($(this).val() == '')
+        {
+          error = true;
+        }
+      });
+
+      if(error){
+        $('#error').show();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+      }
+    });
+
+    $('.datepicker').datepicker({
+      format: 'yyyy-mm-dd'
+    });
+
+
+
     var last_pic;
     var last_pic_crop;
     var dimensiones = {

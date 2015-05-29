@@ -74,9 +74,9 @@
             <div id="error" class="alert alert-danger alert-dismissible fade in" style="display:none;">
               <h4>
                 <?php if($get['idioma'] == 'esp'){
-                echo "*El campo título y texto son obligatorios.";
+                echo "*Todos los campos son obligatorios.";
                 }else {
-                  echo "The title and text field are required"; } ?>
+                  echo "*All fields are mandatory"; } ?>
               </h4>
             </div>
             <form role="form" method="post" id="form">
@@ -189,11 +189,21 @@
     $('#form').submit(function(){
       $('#error').hide();
       error = false;
-      
-      if($('#titulo').val() == '' || $('#texto').val() == '')
+
+      if($('#imagen_end').val() == '')
       {
-        error = true;
+        if("<?php echo $noticia['img']; ?>" == '')
+        {
+          error = true;
+        }
       }
+      
+      $('.form-control').each(function(){
+        if($(this).val() == '')
+        {
+          error = true;
+        }
+      });
 
       if(error){
         $('#error').show();
