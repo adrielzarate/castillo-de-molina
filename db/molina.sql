@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-05-2015 a las 02:00:19
+-- Tiempo de generación: 28-05-2015 a las 22:42:50
 -- Versión del servidor: 5.5.43-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.9
 
@@ -34,7 +34,14 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   `apellido` varchar(11) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user` (`user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`user`, `id`, `pass`, `nombre`, `apellido`) VALUES
+('admin', 1, '1234', '', '');
 
 -- --------------------------------------------------------
 
@@ -104,14 +111,14 @@ INSERT INTO `items` (`id`, `cod_seccion`, `cod_sub_seccion`, `text`, `nombre_esp
 (30, 'nosotros', 'valles', 'si', 'Texto valle Curicó', 'Text valley Curicó', 'El Valle de Curicï¿½ se encuadra dentro de la regiï¿½n vitï¿½cola del Valle Central, situado en la Regiï¿½n del Maule. Este clima se caracteriza por la alta variaciï¿½n de temperatura entre el dï¿½a y la noche. En las ï¿½reas mï¿½s frescas se producen vinos Pinot Noir de calidad ï¿½nica. Los vin?edos esta?n plantados en una zona de lomajes suaves, en suelos de granito en descomposicio?n sobre tobas volcanicas.', 'El Valle de Curicï¿½ se encuadra dentro de la regiï¿½n vitï¿½cola del Valle Central, situado en la Regiï¿½n del Maule. Este clima se caracteriza por la alta variaciï¿½n de temperatura entre el dï¿½a y la noche. En las ï¿½reas mï¿½s frescas se producen vinos Pinot Noir de calidad ï¿½nica. Los vin?edos esta?n plantados en una zona de lomajes suaves, en suelos de granito en descomposicio?n sobre tobas volcanicas.'),
 (31, 'nosotros', 'valles', 'si', 'Texto 2', 'Text 2', 'Busca constantemente descubrir el mejor origen especï¿½fico para cada una de sus variedades y asï¿½ obtener la mï¿½xima expresiï¿½n en cada una de ellas.', 'Busca constantemente descubrir el mejor origen especï¿½fico para cada una de sus variedades y asï¿½ obtener la mï¿½xima expresiï¿½n en cada una de ellas.'),
 (32, 'cell_parking', '', '', 'Título', 'Title', 'Cell Parking', 'Cell Parking'),
-(33, 'cell_parking', '', 'si', 'Texto 1', 'Text 1', 'MILES DE PERSONAS EN EL MUNDO SE ESTÃ¡N COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.', ''),
+(33, 'cell_parking', '', 'si', 'Texto 1', 'Text 1', 'MILES DE PERSONAS EN EL MUNDO SE ESTÃ¡N COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.', 'hhhhhhh'),
 (34, 'cell_parking', '', 'si', 'Texto 2', 'Text 2', 'Estï¿½n dispuestas a cambiar el chat por una buena conversaciï¿½n con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquï¿½ y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que estï¿½ presente, y no a travï¿½s de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, asï¿½ mismo como nuestras vidas que no pueden transcurrir en la vorï¿½gine sin que nos detengamos a gozar de cada instante que ella nos regala.', 'Estï¿½n dispuestas a cambiar el chat por una buena conversaciï¿½n con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquï¿½ y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que estï¿½ presente, y no a travï¿½s de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, asï¿½ mismo como nuestras vidas que no pueden transcurrir en la vorï¿½gine sin que nos detengamos a gozar de cada instante que ella nos regala.'),
 (35, 'cell_parking', '', '', 'Título 2', 'Title 2', 'CELL PARKING EN EL MUNDO', 'CELL PARKING EN EL MUNDO'),
 (36, 'cell_parking', '', 'si', 'Título 3', 'Title 3', 'MILES DE PERSONAS EN EL MUNDO SE ESTï¿½N COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.', 'MILES DE PERSONAS EN EL MUNDO SE ESTï¿½N COMPROMETIENDO A DESCONECTARSE DE SUS SMARTPHONES, PARA CONECTARSE CON QUIENES LOS RODEAN.'),
 (37, 'cell_parking', '', 'si', 'Texto 3', 'Text 3', 'Estï¿½n dispuestas a cambiar el chat por una buena conversaciï¿½n con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquï¿½ y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que estï¿½ presente, y no a travï¿½s de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, asï¿½ mismo como nuestras vidas que no pueden transcurrir en la vorï¿½gine sin que nos detengamos a gozar de cada instante que ella nos regala.', 'Estï¿½n dispuestas a cambiar el chat por una buena conversaciï¿½n con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquï¿½ y el ahora.\r\n\r\nCell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que estï¿½ presente, y no a travï¿½s de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, asï¿½ mismo como nuestras vidas que no pueden transcurrir en la vorï¿½gine sin que nos detengamos a gozar de cada instante que ella nos regala.'),
 (38, 'contactos', '', '', 'Título', 'Title', 'Contacto', 'Contacto'),
 (39, 'contactos', '', 'si', 'Texto 1', 'Text 1', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'),
-(40, 'contactos', '', '', 'Título redes', 'Title networks', 'SÃ­guenos:', 'Síguenos:'),
+(40, 'contactos', '', '', 'Título redes', 'Title networks', 'SÃ­guenos:', 'SÃ­guenos:'),
 (41, 'contactos', '', '', 'Título campo nombre', 'Title field name', 'Nombre*', 'Nombre*'),
 (42, 'contactos', '', '', 'Título campo Email', 'Title field Email', 'Email*', 'Email*'),
 (43, 'contactos', '', '', 'Título campo Comentario', 'Title field Comment', 'Comentario', 'Comentario'),
@@ -126,14 +133,22 @@ INSERT INTO `items` (`id`, `cod_seccion`, `cod_sub_seccion`, `text`, `nombre_esp
 
 CREATE TABLE IF NOT EXISTS `noticias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cod_idioma` int(11) NOT NULL,
-  `titulo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` date NOT NULL,
   `texto` longtext COLLATE utf8_spanish_ci NOT NULL,
+  `cod_idioma` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
+  `titulo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `link` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `img` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `img` (`img`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=9 ;
+
+--
+-- Volcado de datos para la tabla `noticias`
+--
+
+INSERT INTO `noticias` (`id`, `fecha`, `texto`, `cod_idioma`, `titulo`, `link`, `img`) VALUES
+(7, '2015-05-27', 'texto', 'esp', 'noticia 1', '', ''),
+(8, '2015-02-11', 'fsdfsdfsdfs', 'esp', 'noticia 2', 'www.facebook.com @', 'e53sf4j.jpg');
 
 -- --------------------------------------------------------
 
@@ -206,6 +221,7 @@ CREATE TABLE IF NOT EXISTS `vinos` (
   `img_dia` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   `img_noche` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   `zip` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
+  `zip_nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `titulo_origen` text COLLATE utf8_spanish_ci NOT NULL,
   `texto_origen` longtext COLLATE utf8_spanish_ci NOT NULL,
   `titulo_vendimia` text COLLATE utf8_spanish_ci NOT NULL,
@@ -215,7 +231,17 @@ CREATE TABLE IF NOT EXISTS `vinos` (
   `titulo_vinificacion` text COLLATE utf8_spanish_ci NOT NULL,
   `texto_vinificacion` longtext COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=10 ;
+
+--
+-- Volcado de datos para la tabla `vinos`
+--
+
+INSERT INTO `vinos` (`id`, `cod_idioma`, `nombre`, `slide`, `horizontal`, `img_dia`, `img_noche`, `zip`, `zip_nombre`, `titulo_origen`, `texto_origen`, `titulo_vendimia`, `texto_vendimia`, `titulo_clima`, `texto_clima`, `titulo_vinificacion`, `texto_vinificacion`) VALUES
+(2, 'esp', 'vinÃ³ 1', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(5, 'esp', 'viÃ±o 2', 'ty4bq63.jpg', 'gdo42ff.jpg', '6g9qkev.jpg', '4sktkol.jpg', '', '', 'titulo origen', 'texto origen', 'titulo vendimia', 'texto vendimiÃ¡Ã¡Ã¡Ã¡', 'titulo clima', 'texto climap', 'titulo vinificacion', 'texto vinificacion'),
+(6, 'eng', 'fdfsd', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(9, 'esp', '', '', '', '', '', 'go5leye.zip', 'datepicker.zip', '', '', '', '', '', '', '', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

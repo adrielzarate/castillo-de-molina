@@ -3,8 +3,8 @@
 	{
 		if(!isset($_SESSION['administrador']))
 		{
-			#header("location: index.php");
-			#exit;
+			header("location: login.php");
+			exit;
 		}
 	}
 ?>

@@ -8,7 +8,7 @@
 		}
 	if(isset($post['user']))
 	{
-		if($user = Sql_select('administradores',array('user' => $post['user'],'password' => $post['password']),'='))
+		if($user = Sql_select('administradores',array('user' => $post['user'],'pass' => $post['password']),'='))
 		{
 			$_SESSION['administrador'] = $user[0];
 			header("location: index.php");
@@ -29,7 +29,7 @@
 <div class="single-widget-container">
     <section class="widget login-widget">
 		<header class="text-align-center">
-			<img width="300px" src="img/logo_color.png">
+			<img width="300px" src="../img/logo-day.png">
 		</header>
         <div class="body">
             <form class="no-margin" action="" method="post" id="form">
