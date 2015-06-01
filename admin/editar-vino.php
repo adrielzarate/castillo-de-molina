@@ -39,22 +39,22 @@
 
     if($post['imagen_slide'] != '')
     {
-      $valores['slide'] = generarCodigo(7,'qwertyuiopasdfghjklzxcvbnm1234567890').'.jpg';
+      $valores['slide'] = generarCodigo(7,'qwertyuiopasdfghjklzxcvbnm1234567890').'.png';
     }
 
     if($post['imagen_horizontal'] != '')
     {
-      $valores['horizontal'] = generarCodigo(7,'qwertyuiopasdfghjklzxcvbnm1234567890').'.jpg';
+      $valores['horizontal'] = generarCodigo(7,'qwertyuiopasdfghjklzxcvbnm1234567890').'.png';
     }
 
     if($post['imagen_dia'] != '')
     {
-      $valores['img_dia'] = generarCodigo(7,'qwertyuiopasdfghjklzxcvbnm1234567890').'.jpg';
+      $valores['img_dia'] = generarCodigo(7,'qwertyuiopasdfghjklzxcvbnm1234567890').'.png';
     }
 
     if($post['imagen_noche'] != '')
     {
-      $valores['img_noche'] = generarCodigo(7,'qwertyuiopasdfghjklzxcvbnm1234567890').'.jpg';
+      $valores['img_noche'] = generarCodigo(7,'qwertyuiopasdfghjklzxcvbnm1234567890').'.png';
     }
     
     if($post['id_vino'] == '')
@@ -450,7 +450,7 @@
       last_pic_crop = $("#img_crop").cropper("getDataURL",{
         width: dimensiones[last_image_open].end_image_width,
         height: dimensiones[last_image_open].end_image_height,
-      },"image/jpeg", 1);
+      },"image/png", 1);
       $(dimensiones[last_image_open].end_input_image).val(last_pic_crop);
       $(dimensiones[last_image_open].end_input_image_view).attr('src',last_pic_crop).css("width",dimensiones[last_image_open].width_mini).css("height",dimensiones[last_image_open].height_mini);
 

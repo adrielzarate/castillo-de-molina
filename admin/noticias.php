@@ -17,8 +17,8 @@
   $pagina = 'noticias.php';
   $page = (isset($get['page'])) ? $get['page'] : 0;
   $search = (isset($get['search'])) ? $get['search'] : '';
-  $limite['inicio'] = $page*20;
-  $limite['final'] = 20;
+  $limite['inicio'] = $page*6;
+  $limite['final'] = 6;
   $orden['campo'] = (isset($get['order'])) ? $get['order'] : 'id';
   $orden['orden'] = (isset($get['order_by'])) ? $get['order_by'] : 'DESC';
   $order = $orden['campo'];
@@ -35,7 +35,7 @@
     $lst = Sql_select_especial($tabla,array('cod_idioma' => $get['idioma']),'=',$limite,$orden,'AND');
     $max_reg = count(Sql_select($tabla,array('cod_idioma' => $get['idioma']),'='));
   }
-  $max_pag = ceil($max_reg/20);
+  $max_pag = ceil($max_reg/6);
 
   if(isset($post["id_noticia_borrar"]))
   {

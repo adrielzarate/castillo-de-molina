@@ -1,3 +1,55 @@
+<?php 
+  include('mysql/mysql.php');
+  include('includes/funciones.php');
+
+  $get = LimpiarGET();
+  $post = LimpiarPOST();
+
+  if($get['idioma'] == '')
+  {
+    $get['idioma'] = 'esp';
+  }
+
+  $items_opciones = Sql_select('items',array('cod_seccion' => 'menu','cod_sub_seccion' => 'opciones'),'=');
+  $items_edad = Sql_select('items',array('cod_seccion' => 'menu','cod_sub_seccion' => 'edad'),'=');
+  
+  foreach ($items_opciones as $item) {
+    if($item['nombre_esp'] == 'Nosotros')
+    {
+      $nosotros = $item[$get['idioma']];
+    }
+    if($item['nombre_esp'] == 'Historia')
+    {
+      $historia = $item[$get['idioma']];
+    }
+    if($item['nombre_esp'] == 'Valles')
+    {
+      $valles = $item[$get['idioma']];
+    }
+    if(utf8_encode($item['nombre_esp']) == 'Enología')
+    {
+      $enologia = $item[$get['idioma']];
+    }
+    if($item['nombre_esp'] == 'Noticias')
+    {
+      $noticias = $item[$get['idioma']];
+    }
+    if($item['nombre_esp'] == 'Vinos')
+    {
+      $vinos = $item[$get['idioma']];
+    }
+    if($item['nombre_esp'] == 'Cell Parking')
+    {
+      $cell_parking = $item[$get['idioma']];
+    }
+    if($item['nombre_esp'] == 'Contacto')
+    {
+      $contacto = $item[$get['idioma']];
+    }
+  }
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -44,8 +96,8 @@
             <div class="small-menu pull-right">
                 <!-- <span class="text-right">Idiomas</span> -->
                 <ul class="pull-right list-inline languages">
-                    <li><a href="">EN</a></li>
-                    <li><a href="">ES</a></li>
+                    <li><a href="index.php?idioma=eng">EN</a></li>
+                    <li><a href="index.php?idioma=esp">ES</a></li>
                     <!-- <li><a href="">FI</a></li> -->
                     <!-- <li><a href="">Italiano</a></li> -->
                 </ul>
@@ -67,19 +119,19 @@
                     <div class="collapse navbar-collapse navbar-main-collapse">
                         <ul class="nav nav-justified">
                             <li id="about-li">
-                                <a id="about" href="#">Nosotros</a>
+                                <a id="about" href="#"><?php echo $nosotros; ?></a>
                                 <ul class="nav-justified">
                                     <li><a href=""></a></li>
-                                    <li><a id="history" href="#">Historia</a></li>
-                                    <li class="valleys"><a id="valleys" href="#">Valles</a></li>
-                                    <li><a id="enology" href="#">Enología</a></li>
+                                    <li><a id="history" href="#"><?php echo $historia; ?></a></li>
+                                    <li class="valleys"><a id="valleys" href="#"><?php echo $valles; ?></a></li>
+                                    <li><a id="enology" href="#"><?php echo $enologia; ?></a></li>
                                     <li><a href=""></a></li>
                                 </ul>
                             </li>
-                            <li><a id="news" class="new-page">Noticias</a></li>
-                            <li><a id="wines" class="new-page" href="#">Vinos</a></li>
-                            <li><a id="cellparking" class="new-page" href="#">Cell Parking</a></li>
-                            <li><a id="contact" class="new-page" href="#">Contacto</a></li>
+                            <li><a id="news" class="new-page"><?php echo $noticias; ?></a></li>
+                            <li><a id="wines" class="new-page" href="#"><?php echo $vinos; ?></a></li>
+                            <li><a id="cellparking" class="new-page" href="#"><?php echo $cell_parking; ?></a></li>
+                            <li><a id="contact" class="new-page" href="#"><?php echo $contacto; ?></a></li>
                         </ul>
                     </div>
                 </div>
@@ -89,7 +141,7 @@
         <main></main>
         <div id="cargando" class="text-center">
             <img src="img/loader.gif" alt="">
-            <p>cargando</p>
+            <p><?php echo $get['idioma'] == 'esp'? 'cargando' : 'loading'; ?></p>
         </div>
 
         <footer>
@@ -122,15 +174,32 @@
                 </div> -->
 
                 <div class="col-sm-offset-3 col-sm-6">
-                    <h2 class="enfasis">Verifique su edad</h2>
-                    <em>Debe ser mayor de 18 años para visitar el sitio</em>
-                    <p><a href="#">Soy mayor de 18 años</a></p>
+                    <?php foreach($items_edad as $item)
+                    { ?>
+                      <?php if(utf8_encode($item['nombre_esp']) == 'Título')
+                            { ?>
+                              <h2 class="enfasis"><?php echo $item[$get['idioma']]; ?></h2>
+                            <?php } ?>
+
+                            <?php if(utf8_encode($item['nombre_esp']) == 'Condición')
+                            { ?>
+                              <em><?php echo $item[$get['idioma']]; ?></em>
+                            <?php } ?>
+
+                            <?php if(utf8_encode($item['nombre_esp']) == 'Texto botón')
+                            { ?>
+                              <p><a href="#"><?php echo $item[$get['idioma']]; ?></a></p>
+                            <?php } ?>
+                    <?php } ?>
                 </div>
 
             </div>
         </div>
 
         <!--script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script-->
+        <script type="text/javascript">
+          var idioma = '<?php echo $get['idioma']; ?>';
+        </script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=es"></script>
         <script src="js/vendor/jquery-1.11.0.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
