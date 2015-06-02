@@ -1,3 +1,13 @@
+<?php 
+include('mysql/mysql.php');
+include('includes/funciones.php');
+
+$get = LimpiarGET();
+$post = LimpiarPOST();
+
+$vinos = Sql_select('vinos',array('cod_idioma' => $get['idioma']),'=');
+
+?>
 <article id="wines-content">
 <!--     <section class="intro">
         <img class="img-background" src="img/wines.jpg" alt="">
@@ -68,90 +78,20 @@
                                     </div>
                                 </li> -->
 
-                                <li>
-                                    <img src="img/vinos/cabernet-sauvignon-valle-central.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Cabernet Sauvignon Valle Central</a></h2>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <img src="img/vinos/cabernet-sauvignon-valle-rapel.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Cabernet Sauvignon Valle Rapel</a></h2>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <img src="img/vinos/carmenere-valle-maule.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Carmenere Valle Maule</a></h2>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <img src="img/vinos/chardonnay-valle-casablanca.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Chardonnay Valle Casablanca</a></h2>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <img src="img/vinos/merlot-valle-rapel.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Merlot Valle Rapel</a></h2>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <img src="img/vinos/pinot-noir-valle-curico.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Pinot Noir Valle Curico</a></h2>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <img src="img/vinos/rose-organico-valle-cachapoal.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Rose Organico Valle Cachapoal</a></h2>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <img src="img/vinos/sauvignon-blanco-valle-casablanca.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Sauvignon Blanco Valle Casablanca</a></h2>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <img src="img/vinos/sauvignon-blanco-valle-elqui.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Sauvignon Blanco Valle Elqui</a></h2>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <img src="img/vinos/syrah-valle-maule.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Syrah Valle Maule</a></h2>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <img src="img/vinos/syrah-valle-maule.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Syrah Valle Maule</a></h2>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <img src="img/vinos/winemaker-blend-valle-rapel.png" alt="" />
-                                    <div class="sc-content">
-                                        <h2><a id="" href="#">Winemaker Blend Valle Rapel</a></h2>
-                                    </div>
-                                </li>
-
+                                <?php if(is_array($vinos))
+                                { 
+                                  foreach($vinos as $vino)
+                                  { ?>
+                                    <li>
+                                        <img src="<?php echo 'img/vinos/'.$vino['slide']; ?>" alt="" />
+                                        <div class="sc-content">
+                                            <h2><a id="show_wine" data-id-vino="<?php echo $vino['id'];?>" href="#"><?php echo $vino['nombre']; ?></a></h2>
+                                        </div>
+                                    </li>
+                                  <?php } 
+                                   }else{
+                                    echo $get['idioma'] == 'esp'? "No hay vinos cargados" : "No wines loaded";
+                                  } ?>
                             </ul>
                         </div>
                     </div>
@@ -202,7 +142,9 @@
         $("#cargando").show();
         $("#wine-description").addClass("desaparecer");
         $.ajax({
-            url: nombre + ".php",
+            type: 'GET',
+            data: { idioma : idioma,id_vino : $(nombre).data('id-vino')},
+            url: $(nombre).attr('id') + ".php",
             cache: true,
             success: function(respuesta){
                 $("#wine-description").delay(100).fadeOut(function(){
@@ -220,15 +162,17 @@
 
 
     function scrollToDescription(thisId){
+        
         mostrarVino(thisId);
     }
 
-    $(".sky-carousel a").attr("onclick", "scrollToDescription(this.id)");
+    $(".sky-carousel a").attr("onclick", "scrollToDescription(this)");
 
     $(".sky-carousel li").bind('click', function(event){
-        var findId = $(this).find('h2 a').attr('id');
+        var findId = $(this).find('h2 a');
         mostrarVino(findId);
         event.preventDefault()
     });
+
 
 </script>

@@ -17,10 +17,12 @@ function timeHome(){
 var firstTime = true;
 var idSelectedPage;
 
-function mostrarSeccion(nombre){
+function mostrarSeccion(nombre,page){
     $("#cargando").show();
     $("main").addClass("desaparecer");
     $.ajax({
+        type: 'GET',
+        data: { idioma : idioma, page : page},
         url: nombre + ".php",
         cache: true,
         success: function(respuesta){
@@ -43,6 +45,8 @@ function mostrarSeccionHome(section){
     $("#cargando").show();
     $("main").addClass("desaparecer");
     $.ajax({
+        type: 'GET',
+        data: { idioma : idioma},
         url: "home.php",
         cache: true,
         success: function(respuesta){

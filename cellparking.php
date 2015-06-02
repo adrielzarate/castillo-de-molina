@@ -1,3 +1,13 @@
+<?php 
+  include('mysql/mysql.php');
+  include('includes/funciones.php');
+
+  $get = LimpiarGET();
+  $post = LimpiarPOST();
+
+  $items = Sql_select('items',array('cod_seccion' => 'cell_parking'),'=');
+
+?>
 <article id="cellparking-content">
       <iframe frameborder="0" height="100%" width="100%"
         src="https://youtube.com/embed/5rljURvx5f0?autoplay=1&controls=0&showinfo=0&autohide=1">
@@ -8,17 +18,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <h2>Cell Parking</h2>
-                    <br>
-                    <h3>Miles de personas en el mundo se están comprometiendo a desconectarse de sus smartphones, para conectarse con quienes los rodean.</h3>
-                    <p>Están dispuestas a cambiar el chat por una buena conversación con sus amigos, a buscar la calidad en cada cosa y experiencia, a valorar su tiempo transformando cada instante en una oportunidad para desconectarse y disfrutar el aquí y el ahora.</p>
+                  <?php foreach($items as $item)
+                        { ?>
+                          <?php if(utf8_encode($item[nombre_esp]) == 'Título')
+                                { ?>
+                                  <h2><?php echo $item[$get['idioma']].'<br>'; ?></h2>
+                          <?php } ?>
+
+                          <?php if(utf8_encode($item[nombre_esp]) == 'Texto 1')
+                                { ?>
+                                  <h3><?php echo $item[$get['idioma']]; ?></h3>
+                          <?php } ?>
+
+                          <?php if(utf8_encode($item[nombre_esp]) == 'Texto 2')
+                                { ?>
+                                  <p><?php echo $item[$get['idioma']]; ?></p>
+                          <?php } ?>
+                  <?php } ?>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="cellparking-map-section">
-        <h2>Cell Parking en el Mundo</h2>
+        <?php foreach($items as $item)
+              { ?>
+                <?php if(utf8_encode($item[nombre_esp]) == 'Título 2')
+                      { ?>
+                        <h2><?php echo $item[$get['idioma']].'<br>'; ?></h2>
+                <?php } ?>
+        <?php } ?>
         <div id="cellparking-map-canvas"></div>
     </section>
 
@@ -26,7 +55,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <p>Cell Parking es una iniciativa de Castillo de Molina, que invita a desconectarte y disfrutar de la realidad que está presente, y no a través de una pantalla. Una copa de vino no nace para ser consumida, sino degustada de principio a fin, así mismo como nuestras vidas que no pueden transcurrir en la vorágine sin que nos detengamos a gozar de cada instante que ella nos regala.</p>
+                    <?php foreach($items as $item)
+                      { ?>
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto 3')
+                              { ?>
+                                <p><?php echo $item[$get['idioma']].'<br>'; ?></p>
+                        <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
         </div>

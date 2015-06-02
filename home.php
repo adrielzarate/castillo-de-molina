@@ -1,3 +1,18 @@
+<?php 
+  include('mysql/mysql.php');
+  include('includes/funciones.php');
+
+  $get = LimpiarGET();
+  $post = LimpiarPOST();
+
+  $items_dia = Sql_select('items',array('cod_seccion' => 'nosotros','cod_sub_seccion' => 'intro_dia'),'=');
+  $items_noche = Sql_select('items',array('cod_seccion' => 'nosotros','cod_sub_seccion' => 'intro_noche'),'=');
+  $items_nosotros = Sql_select('items',array('cod_seccion' => 'nosotros','cod_sub_seccion' => 'nosotros'),'=');
+  $items_historia = Sql_select('items',array('cod_seccion' => 'nosotros','cod_sub_seccion' => 'historia'),'=');
+  $items_enologia = Sql_select('items',array('cod_seccion' => 'nosotros','cod_sub_seccion' => 'enologia'),'=');
+  $items_valles = Sql_select('items',array('cod_seccion' => 'nosotros','cod_sub_seccion' => 'valles'),'=');
+
+?>
 <article id="home-content">
     <section class="intro">
         <div class="intro-body">
@@ -5,12 +20,32 @@
                 <div class="row">
                     <div id="msj-intro" class="col-md-12">
                         <div id="text-intro-day" class="col-sm-6 text-right">
-                            <h2>Este puede ser tu mejor día</h2>
-                            <p class="intro-text">Cualquier momento puede ser bueno si sabes disfrutarlo. Desconéctate y aprovecha tu energía del día, para disfrutar un gran momento junto a Castillo de Molina.</p>
+                            <?php foreach($items_dia as $item)
+                                  { ?>
+                                    <?php if(utf8_encode($item[nombre_esp]) == 'Título')
+                                          { ?>
+                                            <h2><?php echo $item[$get['idioma']]; ?></h2>
+                                    <?php } ?>
+
+                                    <?php if(utf8_encode($item[nombre_esp]) == 'Texto')
+                                          { ?>
+                                            <p class="intro-text"><?php echo $item[$get['idioma']]; ?></p>
+                                    <?php } ?>
+                            <?php } ?>
                         </div>
                         <div id="text-intro-night" class="col-sm-6 text-right">
-                            <h2>Esta puede ser tu mejor noche</h2>
-                            <p class="intro-text">Si estás en casa, invita a tus amigos a cocinar algo nuevo o simplemente a descorchar una botella de buen vino y disfrutar del aquí y el ahora.</p>
+                            <?php foreach($items_noche as $item)
+                                  { ?>
+                                    <?php if(utf8_encode($item[nombre_esp]) == 'Título')
+                                          { ?>
+                                            <h2><?php echo $item[$get['idioma']]; ?></h2>
+                                    <?php } ?>
+
+                                    <?php if(utf8_encode($item[nombre_esp]) == 'Texto')
+                                          { ?>
+                                            <p class="intro-text"><?php echo $item[$get['idioma']]; ?></p>
+                                    <?php } ?>
+                            <?php } ?>
                         </div>
                         <div id="col-video" class="col-sm-6">
                             <!-- <img src="img/video.jpg" alt=""> -->
@@ -61,14 +96,30 @@
     <section id="about-section" class="about container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Nosotros</h2>
-                <p>Castillo de Molina nace como la primer línea Reserva de Viña San Pedro, con una especial dedicación a la calidad e innovación, tomando con calma y cuidadosamente la búsqueda incansable de los mejores valles de Chile.</p>
+                <?php foreach($items_nosotros as $item)
+                      { ?>
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Título')
+                              { ?>
+                                <h2><?php echo $item[$get['idioma']]; ?></h2>
+                        <?php } ?>
+
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto 1')
+                              { ?>
+                                <p><?php echo $item[$get['idioma']]; ?></p>
+                        <?php } ?>
+                <?php } ?>
             </div>
             <div class="col-lg-10 col-lg-offset-1">
                 <img class="img-responsive" src="img/intro-nosotros.jpg" alt="">
             </div>
             <div class="col-lg-8 col-lg-offset-2">
-                <p>Castillo de Molina plantea el disfrutar a cada momento, en cada lugar, porque la vida es una vorágine, pero la vida es ahora.</p>
+                <?php foreach($items_nosotros as $item)
+                      { ?>
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto 2')
+                              { ?>
+                                <p><?php echo $item[$get['idioma']]; ?></p>
+                        <?php } ?>
+                <?php } ?>
             </div>
         </div>
     </section>
@@ -81,9 +132,23 @@
 
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Historia</h2>
-                <h3><em>“Se dice que los mejores vinos del mundo provienen de un château, un castillo”</em></h3>
-                <p>Hace 150 años, los hermanos españoles Correa Albano fundaron Viña San Pedro en Molina, Chile. Al llegar a la cima más alta de sus tierras, maravillados contemplaron su majestuoso entorno. En ese instante, decidieron perpetuar esa sublime riqueza, en un “Castillo” que emergiera desde la tierra, su primer vino reserva: Castillo de Molina.</p>
+                <?php foreach($items_historia as $item)
+                      { ?>
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Título')
+                              { ?>
+                                <h2><?php echo $item[$get['idioma']]; ?></h2>
+                        <?php } ?>
+
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto 1')
+                              { ?>
+                                <h3><em><?php echo $item[$get['idioma']]; ?></em></h3>
+                        <?php } ?>
+
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto 2')
+                              { ?>
+                                <p><?php echo $item[$get['idioma']]; ?></p>
+                        <?php } ?>
+                <?php } ?>
             </div>
         </div>
 
@@ -97,9 +162,23 @@
 
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2>Valles</h2>
-                <h3><em>Castillo de Molina ha alcanzado una reconocida posición a nivel mundial, entre los mejores vinos chilenos en su segmento.</em></h3>
-                <p>Busca constantemente descubrir el mejor origen específico para cada una de sus variedades y así obtener la máxima expresión en cada una de ellas.</p>
+                <?php foreach($items_valles as $item)
+                      { ?>
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Título')
+                              { ?>
+                                <h2><?php echo $item[$get['idioma']]; ?></h2>
+                        <?php } ?>
+
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto 1')
+                              { ?>
+                                <h3><em><?php echo $item[$get['idioma']]; ?></em></h3>
+                        <?php } ?>
+
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto 2')
+                              { ?>
+                                <p><?php echo $item[$get['idioma']]; ?></p>
+                        <?php } ?>
+                <?php } ?>
             </div>
         </div>
 
@@ -119,7 +198,13 @@
             <div class="col-xs-12">
                 <img class="img-responsive" src="img/field-2.jpg" alt="">
                 <h4>Casablanca</h4>
-                <p>Casablanca es tal vez el más conocido de los valles fríos chilenos, a 18 km en línea recta del mar y rodeado por la Cordillera de la Costa. Tiene clara influencia marítima y cada día se presenta una neblina matinal llamada "camanchaca".</p>
+                <?php foreach($items_valles as $item)
+                      { ?>
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto valle Casa Blanca')
+                              { ?>
+                                <p><?php echo $item[$get['idioma']]; ?></p>
+                        <?php } ?>
+                <?php } ?>
             </div>
         </div>
 
@@ -127,8 +212,13 @@
             <div class="col-xs-12">
                 <img class="img-responsive" src="img/elqui.jpg" alt="">
                 <h4>Elqui</h4>
-                <p>El Valle del Elqui está ubicado al norte de Chile y sus vides crecen bajo una poderosa influencia marina ya que están ubicadas a 20 km en línea recta del mar. Todas las mañanas, cubre los viñedos una nubosidad proveniente del mar hasta el medio día favoreciendo el clima fresco junto a una buena ventilación debido al fuerte viento del área. Sus suelos contienen un alto contenido mineral que le confieren una única identidad enológica a los Sauvignon Blanc.</p>
-                <p>Castillo de Molina fue el primer Sauvignon Blanc de origen Valle de Elqui, siendo un éxito rotundo alrededor del mundo.</p>
+                <?php foreach($items_valles as $item)
+                      { ?>
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto valle Elqui')
+                              { ?>
+                                <p><?php echo $item[$get['idioma']]; ?></p>
+                        <?php } ?>
+                <?php } ?>
             </div>
         </div>
 
@@ -136,7 +226,13 @@
             <div class="col-xs-12">
                 <img class="img-responsive" src="img/rapel.jpg" alt="">
                 <h4>Rapel</h4>
-                <p>Ubicado al sur de Chile, nos encontramos con un valle generoso y de de suelos esponjosos, arcillosos y rocosos, donde se producen inmejorables vinos de variedad tinta como el Cabernet Sauvignon y Merlot. Este valle posee un clima Mediterráneo, con una gran oscilación térmica entre el día y la noche de casi 20°C y su verano es seco con un alto promedio de temperaturas, cercano a los 25°C.</p>
+                <?php foreach($items_valles as $item)
+                      { ?>
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto valle Rapel')
+                              { ?>
+                                <p><?php echo $item[$get['idioma']]; ?></p>
+                        <?php } ?>
+                <?php } ?>
             </div>
         </div>
 
@@ -144,7 +240,13 @@
             <div class="col-xs-12">
                 <img class="img-responsive" src="img/maule.jpg" alt="">
                 <h4>Maule</h4>
-                <p>En el Valle del Maule se encuentra la localidad de Pencahue, un área conocida por su clima cálido-seco y por sus irregulares suelos rocosos. En tal ambiente, los Syrah de clima cálido y los Carmenère prueban su temple cultivados en secano, de excelente acidez natural y elegancia.</p>
+                <?php foreach($items_valles as $item)
+                      { ?>
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto valle Maule')
+                              { ?>
+                                <p><?php echo $item[$get['idioma']]; ?></p>
+                        <?php } ?>
+                <?php } ?>
             </div>
         </div>
 
@@ -152,8 +254,13 @@
             <div class="col-xs-12">
                 <img class="img-responsive" src="img/curico.jpg" alt="">
                 <h4>Curicó</h4>
-                <p>El Valle de Curicó se encuadra dentro de la región vitícola del Valle Central, situado en la Región del Maule. Este clima se caracteriza por la alta variación de temperatura entre el día y la noche. En las áreas más frescas se producen vinos Pinot Noir de calidad única. </p>
-                <p>Los viñedos están plantados en una zona de lomajes suaves, en suelos de granito en descomposición sobre tobas volcanicas.</p>
+                <?php foreach($items_valles as $item)
+                      { ?>
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto valle Curicó')
+                              { ?>
+                                <p><?php echo $item[$get['idioma']]; ?></p>
+                        <?php } ?>
+                <?php } ?>
             </div>
         </div>
 
@@ -163,14 +270,31 @@
 
     <section class="img-section dark-cava text-center">
         <!-- <img class="img-background" src="img/dark-cava.jpg" alt=""> -->
-        <h3><em>Castillo de Molina, su enfoque hoy en día es buscar para cada cepa, un valle que exprese a la perfección nuestra búsqueda de vinos de excelencia.</em></h3>
+        <?php foreach($items_valles as $item)
+                      { ?>
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto 3')
+                              { ?>
+                                <h3><em><?php echo $item[$get['idioma']]; ?></em></h3>
+                        <?php } ?>
+                <?php } ?>
     </section>
 
     <section id="enology-section" class="about cv container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Enología</h2>
-                <p>Para cada cepa existe un valle que expresa a la perfección nuestra búsqueda de vinos de excelencia.</p>
+                <?php foreach($items_enologia as $item)
+                      { ?>
+                        
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Título')
+                              { ?>
+                                <h2><?php echo $item[$get['idioma']]; ?></h2>
+                        <?php } ?>
+
+                        <?php if(utf8_encode($item[nombre_esp]) == 'Texto 1')
+                              { ?>
+                                <p><?php echo $item[$get['idioma']]; ?></p>
+                        <?php } ?>
+                <?php } ?>
             </div>
             <div  class="col-lg-12">
                 <img src="img/cv/main-picture.png" alt="">
