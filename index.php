@@ -7,7 +7,8 @@
 
   if($get['idioma'] == '')
   {
-    $get['idioma'] = 'esp';
+    header("location: language.php");
+    exit;
   }
 
   $items_opciones = Sql_select('items',array('cod_seccion' => 'menu','cod_sub_seccion' => 'opciones'),'=');
