@@ -1,3 +1,11 @@
+<?php
+  include('mysql/mysql.php');
+  include('includes/funciones.php');
+
+  $get = LimpiarGET();
+  $post = LimpiarPOST();
+
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -44,22 +52,25 @@
         </footer>
 
         <div class="cover"></div>
-
-        <div id="check-age" class="container">
+        <div class="container select-language">
             <div class="row">
                 <div class="col-sm-12">
                     <img src="img/logo-nigth.png" alt="">
                 </div>
 
+                <br><br><br><br><br>
                 <div class="col-sm-offset-3 col-sm-6">
                     <h2 class="enfasis">Selecciona tu idioma / Select your language</h2>
-                    <p><a href="#"> <img src="img/spanish.jpg" width="30" height="20" alt=""> Español</a> <a href="#"><img src="img/english.jpg" width="30" height="20" alt=""> English</a></p>
+                    <p><a href="index.php?idioma=esp"> <img src="img/spanish.jpg" width="30" height="20" alt=""> Español</a> <a href="index.php?idioma=eng"><img src="img/english.jpg" width="30" height="20" alt=""> English</a></p>
                 </div>
 
             </div>
         </div>
 
         <!--script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script-->
+        <script type="text/javascript">
+          var idioma = '<?php echo $get['idioma']; ?>';
+        </script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=es"></script>
         <script src="js/vendor/jquery-1.11.0.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
