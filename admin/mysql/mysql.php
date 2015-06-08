@@ -7,7 +7,7 @@ date_default_timezone_set ('America/Argentina/Cordoba');
 $hostname_bbdd = "localhost";
 $database_bbdd = "molina";
 $username_bbdd = "root";
-$password_bbdd = "1234";
+$password_bbdd = "";
 
 $bbdd = mysql_connect($hostname_bbdd, $username_bbdd, $password_bbdd) or trigger_error(mysql_error(),E_USER_ERROR);
 mysql_select_db($database_bbdd);
@@ -152,7 +152,7 @@ function Sql_select_especial($table,$valores,$operador,$limite,$orden,$conector 
 	{
 		$sql .=' LIMIT '.$limite['inicio'].' , '.$limite['final'].' ;';
 	}
-	
+
 	$msql = mysql_query($sql);
 	$i=0;
 	while ( ($reg = mysql_fetch_assoc ( $msql )) != false ) {

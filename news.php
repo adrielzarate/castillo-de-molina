@@ -1,4 +1,4 @@
-<?php 
+<?php
   include('mysql/mysql.php');
   include('includes/funciones.php');
 
@@ -7,7 +7,7 @@
 
 
   $seccion_actual = Sql_select("secciones",array('nombre' => 'menu'),'=');
-  $seccion_actual = $seccion_actual[0]; 
+  $seccion_actual = $seccion_actual[0];
 
 
   $tabla = 'noticias';
@@ -22,7 +22,7 @@
 
   $noticias = Sql_select_especial($tabla,array('cod_idioma' => $get['idioma']),'=',$limite,$orden,'AND');
   $max_reg = count(Sql_select($tabla,array('cod_idioma' => $get['idioma']),'='));
-  
+
   $max_pag = ceil($max_reg/6);
 
 
@@ -45,12 +45,12 @@
         <div class="container">
 
             <div class="row">
-                <?php 
+                <?php
                 if(is_array($noticias))
                 {
                   foreach($noticias as $noticia)
                   { ?>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 a-new">
                         <a href="<?php echo $noticia['link']; ?>" target="_blank">
                             <img class="img-responsive" src="<?php echo 'img/noticias/'.$noticia['img']; ?>" alt="">
                             <h3><?php echo $noticia['titulo']; ?></h3>
@@ -68,7 +68,7 @@
             <nav>
               <?php include("includes/paginador.php"); ?>
             </nav>
-            
+
 
         </div>
     </section>

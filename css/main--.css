@@ -631,7 +631,6 @@ ul.nav > ul{
   min-height: 100%;
   position: relative;
   color: #000;
-  margin-top: 80px;
 }
 
 #valleys-map ul {
@@ -1078,10 +1077,6 @@ ul.nav > ul{
 
 
 /*news-content*/
-#news-content .a-new {
-  margin-bottom: 80px;
-}
-
 #news-content .btn {
   margin-top: 30px;
   display: inline-block;
@@ -1607,8 +1602,7 @@ body.night #cellparking-content .intro .container p {
 }
 
 /*check-age*/
-#check-age,
-#check-language {
+#check-age, .select-language {
   position: absolute;
   z-index: 10000;
   width: 100%;
@@ -1622,25 +1616,18 @@ body.night #cellparking-content .intro .container p {
   display: none;
 }
 
-#check-language {
-  display: block;
-}
-
-#check-age h2,
-#check-language h2 {
+#check-age h2, .select-language h2  {
   font-size: 42px;
   margin-bottom: 10px;
 }
 
-#check-age em,
-#check-language em {
+#check-age em, .select-language {
   font-size: 24px;
   margin-bottom: 20px;
   display: block;
 }
 
-#check-age a,
-#check-language a {
+#check-age a, .select-language a {
   margin-top: 30px;
   display: inline-block;
   padding: 10px 20px;
@@ -1648,31 +1635,51 @@ body.night #cellparking-content .intro .container p {
   border-radius: 5px;
 }
 
-#check-age a:hover,
-#check-language a:hover {
+#check-age a:hover, .select-language a:hover {
   background-color: #a16345;
   color: #fff;
 }
 
-#check-age .col-sm-12,
-#check-language .col-sm-12 {
+#check-age .col-sm-12, .select-language {
   margin-bottom: 100px;
 }
 
+#check-age .form-group input[type="checkbox"], .select-language .form-group input[type="checkbox"]  {
+    display: none;
+}
+
+#check-age .form-group input[type="checkbox"] + .btn-group > label.active, .select-language .form-group input[type="checkbox"] + .btn-group > label.active {
+    background-color: #a16345;
+    border: #a16345 solid thin;
+    color:  #fff;
+}
+
+#check-age .form-group input[type="checkbox"] + .btn-group > label span, .select-language .form-group input[type="checkbox"] + .btn-group > label span {
+    width: 20px;
+}
+
+#check-age .form-group input[type="checkbox"] + .btn-group > label span:first-child, .select-language .form-group input[type="checkbox"] + .btn-group > label span:first-child  {
+    display: none;
+}
+#check-age .form-group input[type="checkbox"] + .btn-group > label span:last-child, .select-language .form-group input[type="checkbox"] + .btn-group > label span:last-child  {
+    display: inline-block;
+}
+
+#check-age .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child, .select-language .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+    display: inline-block;
+}
+#check-age .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child, .select-language .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+    display: none;
+}
+
 .pagination > li > a,
-.pagination > li > span,
-.pagination>.disabled>span,
-.pagination>.disabled>span:hover,
-.pagination>.disabled>span:focus,
-.pagination>.disabled>a,
-.pagination>.disabled>a:hover,
-.pagination>.disabled>a:focus {
+.pagination > li > span {
    color: #a16345;
    background-color: transparent;
    border:none;
 }
 
-.pagination > li > a:hover,
-.pagination>.active>a {
+.pagination > li > a:hover {
    background-color: rgba(255,255,255,.2);
 }
+

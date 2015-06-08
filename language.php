@@ -52,7 +52,7 @@
         </footer>
 
         <div class="cover"></div>
-        <div class="container select-language">
+        <div id="check-language" class="container select-language">
             <div class="row">
                 <div class="col-sm-12">
                     <img src="img/logo-nigth.png" alt="">
