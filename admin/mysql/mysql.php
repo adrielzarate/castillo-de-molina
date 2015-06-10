@@ -7,7 +7,7 @@ date_default_timezone_set ('America/Argentina/Cordoba');
 $hostname_bbdd = "localhost";
 $database_bbdd = "molina";
 $username_bbdd = "root";
-$password_bbdd = "";
+$password_bbdd = "1234";
 
 $bbdd = mysql_connect($hostname_bbdd, $username_bbdd, $password_bbdd) or trigger_error(mysql_error(),E_USER_ERROR);
 mysql_select_db($database_bbdd);

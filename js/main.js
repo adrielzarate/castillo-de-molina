@@ -14,7 +14,7 @@ function timeHome(){
     }
 }
 
-var firstTime = true;
+var firstTime = false;
 var idSelectedPage;
 
 function mostrarSeccion(nombre,page){
@@ -102,6 +102,7 @@ function interPageLoaded(){
 
 $(document).ready(function(){
 
+    $("body").removeClass('no-scroll');
     if(firstTime) {
         $("#check-age").show();
         $("body").show();
