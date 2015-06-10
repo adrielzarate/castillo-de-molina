@@ -4,7 +4,7 @@
 
   $get = LimpiarGET();
   $post = LimpiarPOST();
-
+  $items_edad = Sql_select('items',array('cod_seccion' => 'menu','cod_sub_seccion' => 'edad'),'=');
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -60,6 +60,25 @@
 
                 <br><br><br><br><br>
                 <div class="col-sm-offset-3 col-sm-6">
+                  <?php foreach($items_edad as $item)
+                    { ?>
+                      <?php if(utf8_encode($item['nombre_esp']) == 'Título')
+                            { ?>
+                              <h2 class="enfasis"><?php echo $item[esp].'/'.$item[eng]; ?></h2>
+                            <?php } ?>
+
+                            <?php if(utf8_encode($item['nombre_esp']) == 'Condición')
+                            { ?>
+                              <em><?php echo $item[esp].'/'.$item[eng]; ?></em>
+                            <?php } ?>
+
+                            <?php if(utf8_encode($item['nombre_esp']) == 'Texto botón')
+                            { ?>
+                              <p><a href="javascript:void(0);" id="button_age"><?php echo $item[esp].'/'.$item[eng]; ?></a></p>
+                            <?php } ?>
+                    <?php } ?>
+                </div>
+                <div class="col-sm-offset-3 col-sm-6" style="display:none;" id="language">
                     <h2 class="enfasis">Selecciona tu idioma / Select your language</h2>
                     <p><a href="index.php?idioma=esp"> <img src="img/spanish.jpg" width="30" height="20" alt=""> Español</a> <a href="index.php?idioma=eng"><img src="img/english.jpg" width="30" height="20" alt=""> English</a></p>
                 </div>
@@ -68,11 +87,14 @@
         </div>
 
         <!--script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script-->
+        <script src="js/vendor/jquery-1.11.0.min.js"></script>
         <script type="text/javascript">
           var idioma = '<?php echo $get['idioma']; ?>';
+          $('#button_age').click(function(){
+            $('#language').show();
+          });
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=es"></script>
-        <script src="js/vendor/jquery-1.11.0.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/source/js/jquery.sky.carousel-1.0.2.min.js"></script>
         <script src="js/main.js"></script>
