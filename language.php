@@ -18,6 +18,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="icon" href="favicon.png">
+
         <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Yanone+Kaffeesatz:400,200,300,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 

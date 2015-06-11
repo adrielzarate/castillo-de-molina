@@ -6,6 +6,8 @@
 
 <title>Castillo de Molina - Admin</title>
 
+<link rel="icon" href="favicon.png">
+
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/plugins/datepicker.css" rel="stylesheet">
