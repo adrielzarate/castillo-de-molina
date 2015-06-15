@@ -59,6 +59,8 @@
     $valores['texto_clima'] = $post['texto_clima'];
     $valores['titulo_vinificacion'] = $post['titulo_vinificacion'];
     $valores['texto_vinificacion'] = $post['texto_vinificacion'];
+    $valores['titulo_maridaje'] = $post['titulo_maridaje'];
+    $valores['texto_maridaje'] = $post['texto_maridaje'];
     $valores['visibilidad'] = '';
     
     if(isset($post['chile']) && isset($post['colombia']) && isset($post['venezuela']) && isset($post['finland']))
@@ -347,6 +349,16 @@
                 <div class="form-group">
                   <label><?php echo $get['idioma'] == 'esp'?'Texto vinificación':'Vinification text'; ?></label>
                   <textarea class="form-control" rows="3" name="texto_vinificacion" id="texto_vinificacion" placeholder="<?php echo $get['idioma'] == 'esp'?'Texto vinificación':'Vinification text'; ?>"><?php echo $vino['texto_vinificacion']; ?></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label><?php echo $get['idioma'] == 'esp'?'Título maridaje':'Marriage title'; ?></label>
+                  <input class="form-control" name="titulo_maridaje" id="titulo_maridaje" value="<?php echo $vino['titulo_maridaje']; ?>" placeholder="<?php echo $get['idioma'] == 'esp'?'Título maridaje':'Marriage title'; ?>" >
+                </div>
+
+                <div class="form-group">
+                  <label><?php echo $get['idioma'] == 'esp'?'Texto maridaje':'Marriage text'; ?></label>
+                  <textarea class="form-control" rows="3" name="texto_maridaje" id="texto_maridaje" placeholder="<?php echo $get['idioma'] == 'esp'?'Texto maridaje':'Marriage text'; ?>"><?php echo $vino['texto_maridaje']; ?></textarea>
                 </div>
 
                 <div class="form-group text-right">
