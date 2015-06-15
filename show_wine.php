@@ -71,6 +71,8 @@
                     <p><?php echo $vino[texto_clima]; ?></p>
                     <strong><?php echo $vino[titulo_vinificacion]; ?></strong>
                     <p><?php echo $vino[texto_vinificacion]; ?></p>
+                    <strong><?php echo $vino[titulo_maridaje]; ?></strong>
+                    <p><?php echo $vino[texto_maridaje]; ?></p>
                 </div>
             </div>
         </div>
