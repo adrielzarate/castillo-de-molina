@@ -1,11 +1,44 @@
 <?php 
 include('mysql/mysql.php');
 include('includes/funciones.php');
+include('includes/geoiploc.php');
 
 $get = LimpiarGET();
 $post = LimpiarPOST();
+$ip = $_SERVER["REMOTE_ADDR"];
+$pais_actual = getCountryFromIP($ip, " NamE ");
+if($pais_actual != "Chile" && $pais_actual != "Colombia" && $pais_actual != "Venezuela" && $pais_actual != "Finland")
+{
+  $pais_actual = 'resto';
+}
 
-$vinos = Sql_select('vinos',array('cod_idioma' => $get['idioma']),'=');
+$vinos_por_idioma = Sql_select('vinos',array('cod_idioma' => $get['idioma']),'=');
+$vinos = array();
+
+foreach($vinos_por_idioma as $vino_tmp)
+{
+  $control = false;
+  $visibilidad = explode(',',$vino_tmp['visibilidad']);
+  if(count($visibilidad)> 1)
+  {
+    foreach($visibilidad as $tmp)
+    {
+      if($tmp == $pais_actual)
+      {
+        $control = true;
+        break;
+      }
+    }
+  }
+  else
+  {
+    $control = true;
+  }
+  if($control)
+  {
+    array_push($vinos, $vino_tmp);
+  }
+}
 
 ?>
 <article id="wines-content">

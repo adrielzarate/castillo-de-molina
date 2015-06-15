@@ -13,6 +13,37 @@
   {
     $vino = Sql_select('vinos',array('id' => $get['id_vino']),'=');
     $vino = $vino[0];
+    
+    $visibilidad = explode(',',$vino['visibilidad']);
+    
+    $chile = false;
+    $colombia = false;
+    $finlandia = false;
+    $venezuela = false;
+    $resto = false;
+    foreach($visibilidad as $pais)
+    {
+      if($pais == "Chile")
+      {
+        $chile = true;
+      }
+      if($pais == "Colombia")
+      {
+        $colombia = true;
+      }
+      if($pais == "Finland")
+      {
+        $finlandia = true;
+      }
+      if($pais == "Venezuela")
+      {
+        $venezuela = true;
+      }
+      if($pais == "resto")
+      {
+        $resto = true;
+      }
+    }
   }
 
 
@@ -28,7 +59,42 @@
     $valores['texto_clima'] = $post['texto_clima'];
     $valores['titulo_vinificacion'] = $post['titulo_vinificacion'];
     $valores['texto_vinificacion'] = $post['texto_vinificacion'];
+    $valores['visibilidad'] = '';
     
+    if(isset($post['chile']) && isset($post['colombia']) && isset($post['venezuela']) && isset($post['finland']))
+    {
+      $valores['visibilidad'] = '';
+    }
+    else
+    {
+
+      if(isset($post['chile']))
+      {
+        $valores['visibilidad'] .= $post['chile'].',';
+      }
+      
+      if(isset($post['colombia']))
+      {
+        $valores['visibilidad'] .= $post['colombia'].',';
+      }
+
+      if(isset($post['venezuela']))
+      {
+        $valores['visibilidad'] .= $post['venezuela'].',';
+      }
+
+      if(isset($post['finland']))
+      {
+        $valores['visibilidad'] .= $post['finland'].',';
+      }
+
+      if(isset($post['resto']))
+      {
+        $valores['visibilidad'] .= $post['resto'].',';
+      }
+
+    }
+
 
     if($_FILES['zip']['name'] != '')
     {
@@ -207,6 +273,40 @@
                   { ?>
                     <a href="<?php echo '../img/vinos/zip/'.$vino['zip']; ?>" class="btn btn-primary"><?php echo $vino['zip_nombre']; ?></a>
                   <?php } ?>
+                </div>
+                <div class="form-group">
+                  <label><?php echo $get["idioma"] == "esp"?"Visibilidad":"Visibility"; ?></label><br>
+                    <label>Chile</label>
+                    <?php if($chile){ ?>
+                      <input  type="checkbox" checked="true" name="chile" value="Chile"><br>
+                    <?php }else{ ?>
+                      <input  type="checkbox" name="chile" value="Chile"><br>
+                    <?php } ?>                    
+                    <label>Colombia</label>
+                    <?php if($colombia){ ?>
+                      <input  type="checkbox" checked="true" name="colombia" value="Colombia"><br>
+                    <?php }else{ ?>
+                      <input  type="checkbox" name="colombia" value="Colombia"><br>
+                    <?php } ?>                    
+                    <label>Venezuela</label>
+                    <?php if($venezuela){ ?>
+                      <input  type="checkbox" checked="true" name="venezuela" value="Venezuela"><br>
+                    <?php }else{ ?>
+                      <input  type="checkbox" name="venezuela" value="Venezuela"><br>
+                    <?php } ?>                    
+                    <label>Finlandia</label>
+                    <?php if($finlandia){ ?>
+                      <input  type="checkbox" checked="true" name="finland" value="Finland"><br>
+                    <?php }else{ ?>
+                      <input  type="checkbox" name="finland" value="Finland"><br>
+                    <?php } ?>                    
+                    <label>Resto del mundo</label>
+                    <?php if($resto){ ?>
+                      <input  type="checkbox" checked="true" name="resto" value="resto">
+                    <?php }else{ ?>
+                      <input  type="checkbox" name="resto" value="resto">
+                    <?php } ?>
+                    <p class="help-block"><?php echo $get["idioma"] == "esp"?"Si no marca ninguna opción,el vino será visible para todo el mundo":"If you do not check any options, the wine will be visible for everyone"; ?></p>
                 </div>
 
                 <div class="form-group">
