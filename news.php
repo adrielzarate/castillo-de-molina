@@ -14,7 +14,7 @@
   $page = (isset($get['page'])) ? $get['page'] : 0;
   $limite['inicio'] = $page*6;
   $limite['final'] = 6;
-  $orden['campo'] = (isset($get['order'])) ? $get['order'] : 'id';
+  $orden['campo'] = (isset($get['order'])) ? $get['order'] : 'fecha';
   $orden['orden'] = (isset($get['order_by'])) ? $get['order_by'] : 'DESC';
   $order = $orden['campo'];
   $order_by = $orden['orden'];
