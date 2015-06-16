@@ -56,7 +56,7 @@
                             <h3><?php echo $noticia['titulo']; ?></h3>
                             <time><?php echo $noticia['fecha']; ?></time>
                             <p><?php echo $noticia['texto'].'[..]'; ?></p>
-                            <p class="btn uppercase"><?php echo $get['idioma'] == 'esp'? 'Continuar leyendo' : 'Continue reading'; ?></p>
+                            <a class="btn uppercase" href="#"><?php echo $get['idioma'] == 'esp'? 'Continuar leyendo' : 'Continue reading'; ?></a>
                         </a>
                     </div>
                   <?php }
