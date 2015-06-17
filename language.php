@@ -62,13 +62,24 @@
 
                 <br><br><br><br><br>
                 <div class="col-sm-offset-3 col-sm-6">
-                    <h2 class="enfasis">Selecciona tu idioma / Select your language</h2>
-                    <p><a id ="esp" href="javascript:void(0);"> <img src="img/spanish.jpg" width="30" height="20" alt=""> Español</a> <a id="eng" href="javascript:void(0);"><img src="img/english.jpg" width="30" height="20" alt=""> English</a></p>
-                </div>
-                <div class="col-sm-offset-3 col-sm-6" id="age" style="display:none;">
-                  <h2 id="titulo" class="enfasis age_index"></h2>
-                  <em id="condicion" class="age_index"></em>
-                  <p><a class="age_index" id="link" href=""></a></p>
+                  <?php foreach($items_edad as $item)
+                  { ?>
+                    <?php if(utf8_encode($item['nombre_esp']) == 'Título')
+                    { ?>
+                      <h2 id="titulo" class="enfasis age_index"><?php echo $item[esp].'/'.$item[eng]; ?></h2>
+                    <?php } ?>
+
+                    <?php if(utf8_encode($item['nombre_esp']) == 'Condición')
+                    { ?>
+                      <em id="condicion" class="age_index"><?php echo $item[esp].'/'.$item[eng]; ?></em>
+                    <?php } ?>
+
+                    <?php if(utf8_encode($item['nombre_esp']) == 'Texto botón')
+                    { ?>
+                      <p><a href="index.php?idioma=esp"><?php echo $item[esp]; ?></a>/<a href="index.php?idioma=eng"><?php echo $item[eng]; ?></a></p>
+                    <?php } ?>
+
+                  <?php } ?>
                 </div>
 
             </div>
@@ -79,47 +90,6 @@
         <script type="text/javascript">
           var idioma = '<?php echo $get['idioma']; ?>';
 
-          <?php foreach($items_edad as $item)
-            { ?>
-              <?php if(utf8_encode($item['nombre_esp']) == 'Título')
-              { ?>
-                var titulo_esp = '<?php echo $item[esp]; ?>';
-                var titulo_eng = '<?php echo $item[eng]; ?>';
-              <?php } ?>
-
-              <?php if(utf8_encode($item['nombre_esp']) == 'Condición')
-              { ?>
-                var condicion_esp = '<?php echo $item[esp]; ?>';
-                var condicion_eng = '<?php echo $item[eng]; ?>';
-              <?php } ?>
-
-              <?php if(utf8_encode($item['nombre_esp']) == 'Texto botón')
-              { ?>
-                var link_esp = '<?php echo $item[esp]; ?>';
-                var link_eng = '<?php echo $item[eng]; ?>';
-              <?php } ?>
-
-            <?php } ?>
-
-
-
-
-          $('#esp').click(function(){
-            $('#link').attr("href","index.php?idioma=esp");
-            $('.age_index').html("");
-            $('#titulo').html(titulo_esp);
-            $('#condicion').html(condicion_esp);
-            $('#link').html(link_esp);
-            $('#age').show();
-          });
-          $('#eng').click(function(){
-            $('#link').attr("href","index.php?idioma=eng");
-            $('.age_index').html("");
-            $('#titulo').html(titulo_eng);
-            $('#condicion').html(condicion_eng);
-            $('#link').html(link_eng);
-            $('#age').show();
-          });
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=es"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
