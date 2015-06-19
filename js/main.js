@@ -18,7 +18,7 @@ var firstTime = false;
 var idSelectedPage;
 
 function mostrarSeccion(nombre,page){
-    $("#cargando").show();
+    //$("#cargando").show();
     $("main").addClass("desaparecer");
     $.ajax({
         type: 'GET',
@@ -42,7 +42,7 @@ function mostrarSeccion(nombre,page){
 }
 
 function mostrarSeccionHome(section){
-    $("#cargando").show();
+    //$("#cargando").show();
     $("main").addClass("desaparecer");
     $.ajax({
         type: 'GET',

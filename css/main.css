@@ -1092,7 +1092,10 @@ ul.nav > ul{
 
 #news-content a h3 {
   margin: 20px 0 5px;
+  min-height: 55px;
   font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 #news-content a time {

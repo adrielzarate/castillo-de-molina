@@ -38,7 +38,7 @@
                                   { ?>
                                     <?php if(utf8_encode($item[nombre_esp]) == 'Título')
                                           { ?>
-                                            <h2><?php echo $item[$get['idioma']]; ?></h2>
+                                            <h2><?php echo $item[$get['idioma']]; ?> <?php echo $get['idioma']; ?> </h2>
                                     <?php } ?>
 
                                     <?php if(utf8_encode($item[nombre_esp]) == 'Texto')
@@ -49,7 +49,21 @@
                         </div>
                         <div id="col-video" class="col-sm-6">
                             <!-- <img src="img/video.jpg" alt=""> -->
-                            <iframe frameborder="0" allowfullscreen title="YouTube video player" width="600" height="330" src="https://www.youtube.com/embed/XPWy9dpWRro?controls=0?autohide=1&list=0&showinfo=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Fwww.millohorarios.cl" id="widget3"></iframe>
+                            <iframe frameborder="0" allowfullscreen title="YouTube video player" width="600" height="330" 
+
+                            <?php 
+                                if ( $get['idioma'] == 'esp' ) {
+                            ?>
+                                    src="https://www.youtube.com/embed/vJZ68tLbG54?controls=0?autohide=1&list=0&showinfo=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Fwww.millohorarios.cl"
+                            <?php
+                                } else {
+                            ?>
+                                    src="https://www.youtube.com/embed/DnBGl2oCuxs?controls=0?autohide=1&list=0&showinfo=0&amp;enablejsapi=1&amp;origin=http%3A%2F%2Fwww.millohorarios.cl"
+                            <?php
+                                }
+                            ?>
+
+                            id="widget3"></iframe>
                             <a id="play-video" href="javascript:void(0);"></a>
                             <script>
 
