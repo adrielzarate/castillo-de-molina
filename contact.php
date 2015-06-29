@@ -9,7 +9,7 @@
 
   if(isset($post['nombre']))
   {
-    #EnviarMail('email destino','Mensaje de'.$post['nombre'],$post['mensaje'],$post['email']);
+    EnviarMail('cmorabi@vspt.cl','Mensaje de'.$post['nombre'],$post['mensaje'],$post['email']);
     header("location: index.php");
     exit;
   }
@@ -89,63 +89,24 @@
                                     { ?>
                                       <label for="inputEmail3" class="col-sm-2 col-md-4 control-label"><?php echo $item[$get['idioma']].'*'; ?></label>
                               <?php } ?>
-
-                            <?php } ?>
+                            <?php } 
+                            ?>
                             <div class="col-sm-8">
                                 <input type="text" name="email" class="form-control" id="inputPassword3" placeholder="<?php echo $get['idioma'] == 'esp' ? 'email@ejemplo.com' : 'email@example.com'; ?>">
                             </div>
                         </div>
-
-                        <!-- <div class="col-md-6 form-group">
-                            <label for="inputEmail3" class="col-sm-2 col-md-4 control-label">Last Name*</label>
-                            <div class="col-sm-8">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Last Name">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 form-group">
-                            <label for="inputPassword3" class="col-sm-2 col-md-4 control-label">Country*</label>
-                            <div class="col-sm-8">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 x4-top form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Category</label>
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label><input type="checkbox"> Remember me</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label><input type="checkbox"> Remember me</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="checkbox">
-                                    <label><input type="checkbox"> Remember me</label>
-                                </div>
-                            </div>
-                        </div> -->
 
                         <div class="col-md-12 x4-top form-group">
                               <?php foreach($items as $item)
                               { ?>
                                 <?php if(utf8_encode($item[nombre_esp]) == 'Título campo Comentario')
                                       { ?>
-                                        <label for="inputEmail3" class="col-sm-2 col-md-4 control-label"><?php echo $item[$get['idioma']].'*'; ?></label>
+                                        <label for="inputEmail3" class="col-sm-2 col-md-2 control-label"><?php echo $item[$get['idioma']].'*'; ?></label>
                                 <?php } ?>
 
                               <?php } ?>
-                            <div class="col-sm-10 text-area-col">
-                                <textarea class="form-control" name="mensaje" rows="12" placeholder="<?php echo $get['idioma'] == 'esp' ? 'Cuerpo del mensaje' : 'Message body'; ?>"></textarea>
+                            <div class="col-sm-8 col-md-10 text-area-col">
+                                <textarea class="form-control pull-left" name="mensaje" rows="12" placeholder="<?php echo $get['idioma'] == 'esp' ? 'Cuerpo del mensaje' : 'Message body'; ?>"></textarea>
                             </div>
                         </div>
 

@@ -199,19 +199,18 @@
             </div>
         </div>
 
-        <!--script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script-->
+        <script src="js/vendor/jquery-1.11.0.min.js"></script>
         <script type="text/javascript">
           var idioma = '<?php echo $get['idioma']; ?>';
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=es"></script>
-        <script src="js/vendor/jquery-1.11.0.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/bootstrap-select.js"></script>
         <script src="js/vendor/source/js/jquery.sky.carousel-1.0.2.min.js"></script>
         <script src="js/main.js"></script>
         <script>
           window.onload=function(){
-          $('.selectpicker').selectpicker();
+          //$('.selectpicker').selectpicker();
           $('.rm-mustard').click(function() {
             $('.remove-example').find('[value=Mustard]').remove();
             $('.remove-example').selectpicker('refresh');
@@ -234,8 +233,8 @@
           });
 
           // scrollYou
-          $('.scrollMe .dropdown-menu').scrollyou();
-            prettyPrint();
+          /*$('.scrollMe .dropdown-menu').scrollyou();
+            prettyPrint();*/
           };
         </script>
     </body>

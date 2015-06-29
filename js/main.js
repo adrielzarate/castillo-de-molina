@@ -193,7 +193,7 @@ $("#go-home").click(function(e){
     $(".nav li").removeClass('active');
 });
 
-
+/*
     var locations = [
         ['Finlandia', 64.905349, 27.209833, 1],
         ['Colombia', 4.531965, -73.325644, 2],
@@ -205,7 +205,7 @@ $("#go-home").click(function(e){
 
         var mapOptions = {
             scrollwheel: false,
-            zoom: 2,
+            zoom: 3,
             center: new google.maps.LatLng(20.001454, 91.628476),
             styles:[
                 {
@@ -310,6 +310,8 @@ $("#go-home").click(function(e){
         }
 
     }
+
+*/
 
 // $(".small-menu > div")
 // .mouseenter(function(){

@@ -33,7 +33,7 @@
                                     <?php } ?>
                             <?php } ?>
                         </div>
-                        <div id="text-intro-night" class="col-sm-6 text-right">
+                        <div id="text-intro-night" class="col-md-6 text-right">
                             <?php foreach($items_noche as $item)
                                   { ?>
                                     <?php if(utf8_encode($item[nombre_esp]) == 'Título')
@@ -47,7 +47,7 @@
                                     <?php } ?>
                             <?php } ?>
                         </div>
-                        <div id="col-video" class="col-sm-6">
+                        <div id="col-video" class="col-md-6">
                             <!-- <img src="img/video.jpg" alt=""> -->
                             <iframe frameborder="0" allowfullscreen title="YouTube video player" width="600" height="330" 
 

@@ -56,29 +56,45 @@
         <div class="cover"></div>
         <div id="check-language" class="container select-language">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 text-center">
                     <img src="img/logo-nigth.png" alt="">
                 </div>
 
                 <br><br><br><br><br>
-                <div class="col-sm-offset-3 col-sm-6">
+
+                <div class="col-xs-offset-1 col-xs-11 col-sm-offset-3 col-sm-3 language-esp">
                   <?php foreach($items_edad as $item)
                   { ?>
                     <?php if(utf8_encode($item['nombre_esp']) == 'Título')
                     { ?>
-                      <h2 id="titulo" class="enfasis age_index"><?php echo $item[esp].'/'.$item[eng]; ?></h2>
+                      <h2 id="titulo" class="enfasis age_index"><?php echo $item[esp]; ?></h2>
                     <?php } ?>
-
                     <?php if(utf8_encode($item['nombre_esp']) == 'Condición')
                     { ?>
-                      <em id="condicion" class="age_index"><?php echo $item[esp].'/'.$item[eng]; ?></em>
+                      <em id="condicion" class="age_index"><?php echo $item[esp]; ?></em>
                     <?php } ?>
-
                     <?php if(utf8_encode($item['nombre_esp']) == 'Texto botón')
                     { ?>
-                      <p><a href="index.php?idioma=esp"><?php echo $item[esp]; ?></a>/<a href="index.php?idioma=eng"><?php echo $item[eng]; ?></a></p>
+                      <a href="index.php?idioma=esp"><?php echo $item[esp]; ?></a>
                     <?php } ?>
+                  <?php } ?>
+                </div>
 
+                <div class="col-xs-offset-1 col-xs-11 col-sm-3 language-eng">
+                  <?php foreach($items_edad as $item)
+                  { ?>
+                    <?php if(utf8_encode($item['nombre_esp']) == 'Título')
+                    { ?>
+                      <h2 id="titulo" class="enfasis age_index"><?php echo $item[eng]; ?></h2>
+                    <?php } ?>
+                    <?php if(utf8_encode($item['nombre_esp']) == 'Condición')
+                    { ?>
+                      <em id="condicion" class="age_index"><?php echo $item[eng]; ?></em>
+                    <?php } ?>
+                    <?php if(utf8_encode($item['nombre_esp']) == 'Texto botón')
+                    { ?>
+                      <a href="index.php?idioma=esp"><?php echo $item[eng]; ?></a>
+                    <?php } ?>
                   <?php } ?>
                 </div>
 
