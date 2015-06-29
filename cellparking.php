@@ -96,6 +96,7 @@
 
 <script src="js/vendor/markerwithlabel.js"></script>
 <script>
+
    function initMap() {
      var latLng = new google.maps.LatLng(20.47805, -5.84716);
      var homeLatLng = new google.maps.LatLng(63.860491, 26.968134);
@@ -194,7 +195,7 @@
        map: map,
        labelContent: "Finlandia",
        labelAnchor: new google.maps.Point(22, 0),
-       labelClass: "labels", // the CSS class for the label
+       labelClass: "labels",
        labelStyle: {opacity: 0.75},
      });
 
@@ -205,7 +206,7 @@
        map: map,
        labelContent: "Chile",
        labelAnchor: new google.maps.Point(22, 0),
-       labelClass: "labels", // the CSS class for the label
+       labelClass: "labels",
        labelStyle: {opacity: 1.0}
      });
 
@@ -216,7 +217,7 @@
        map: map,
        labelContent: "Brasil",
        labelAnchor: new google.maps.Point(22, 0),
-       labelClass: "labels", // the CSS class for the label
+       labelClass: "labels",
        labelStyle: {opacity: 1.0}
      });
 
@@ -227,14 +228,13 @@
        map: map,
        labelContent: "Colombia",
        labelAnchor: new google.maps.Point(22, 0),
-       labelClass: "labels", // the CSS class for the label
+       labelClass: "labels",
        labelStyle: {opacity: 1.0}
      });
    }
 
-    $( document ).ready(function() {
-        initMap();
-    });
-   
-
+    setTimeout(function(){
+      initMap();
+    }, 3000);
+    
 </script>

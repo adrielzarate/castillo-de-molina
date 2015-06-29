@@ -1468,18 +1468,21 @@ input[type="submit"] {
     .btn.scroll-down{
         display:none;
     }
-  #check-language br {
-    display: none;
-  }
-  #check-language .language-esp {
-    border-right: none;
-    text-align: left;
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-  }
-  #check-language .language-eng {
-    margin-left: 8.33333%;
-  }
+    #check-language br {
+      display: none;
+    }
+    #check-language .language-esp {
+      border-right: none;
+      text-align: left;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+    }
+    #check-language .language-eng {
+      margin-left: 8.33333%;
+    }
+    #text-intro-night {
+      text-align: center !important;
+    }
 }
 @media(min-width:767px) {
     p {
@@ -1533,9 +1536,6 @@ input[type="submit"] {
     }
     .form-horizontal .control-label{
       text-align:left;
-    }
-    #text-intro-night {
-      text-align: center !important;
     }
     #home-content #play-video{
         margin: 0 auto;
